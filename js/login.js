@@ -2,7 +2,7 @@ function redirigirAInicio() {
     var usuraio = document.getElementById("user").value;
     var contraseña = document.getElementById("password").value;
 
-    if(usuraio === " " || contraseña === " "){
+    if(usuraio === "" || contraseña === ""){
         alert("Complete los campos");
     } 
     else{
