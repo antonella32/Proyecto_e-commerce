@@ -19,8 +19,21 @@
 <body>
   <main class="mt-5">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="loginerc">
+        <h4>¡Bienvenido!</h4>
+        <form action="" class="login-form">
+        <div class="form-space">
+          <label for="user"></label>
+          <input type="text" name="Usuario" id="user" placeholder="Usuario">
+          <br>
+        </div>
+        <div class="form-space">
+          <label for="password"></label>
+          <input type="password" name="Contraseña" id="password" placeholder="Contraseña">
+          <br>
+        </div>
+        <button type="button" class="btn btn-primary mt-3" onclick="redirigirAInicio()" >Ingresar</button>
+      </form>
       </div>
     </div>
   </main>
