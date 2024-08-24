@@ -200,8 +200,9 @@ a.custom-card:hover {
 }
 
 .loginrec h4 {
-  font-size: 250%;
-  margin-bottom: 5px 
+  font-size: 200%;
+  margin-bottom: 5px; 
+  text-align: center;
 }
 
 .login-form {
