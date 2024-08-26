@@ -253,12 +253,15 @@ a.custom-card:hover {
   border-left: none;
   border-right: none;
   color: rgb(255, 255, 255);
-  background-color: #00ABE4;
   margin: 0;
   padding: 0;
   font-size: 90%;
   text-shadow: 1px 1px 0px  hwb(0 48% 52%);
 
+}
+
+.container table th {
+  background-color: #00ABE4; 
 }
 
 
