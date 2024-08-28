@@ -1,22 +1,24 @@
 function redirigirAInicio() {
-    var usuraio = document.getElementById("user").value;
+    var usuario = document.getElementById("user").value;
     var contraseña = document.getElementById("password").value;
 
-    if(usuraio === "" || contraseña === ""){
+    if (usuario === "" || contraseña === "") {
         alert("Complete los campos");
-    } 
-    else{
+    } else {
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("usuario", usuario);
         window.location.href = "index.html";
     }
 }
 
-function verificarSesion(){
-    if(localStorage.getItem("isLoggedIn") === "true"){
-        window.location.href = "index.html";
-    }
+function verificarSesion() {
+    var user = localStorage.getItem("usuario");
+    console.log('Usuario en localStorage:', user); 
+    if (localStorage.getItem("isLoggedIn") === "true" && user) {
+        document.getElementById("user-navbar").textContent = `${user}`;
+    } 
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    verificarSesion()
-})
+    verificarSesion();
+});
