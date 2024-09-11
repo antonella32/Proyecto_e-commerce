@@ -1,16 +1,16 @@
-function getAutos(url){
+function getProducts(url){
     return fetch(url)
     .then(respuesta => {
         return respuesta.json();
     })
     .then(lista => {
-        showAutosTable(lista.products);
+        showProductsTable(lista.products);
     })
 }
 
-function showAutosTable(autosList){
+function showProductsTable(productsList){
     let productsHtml = "";
-    for(let p of autosList){
+    for(let p of productsList){
         productsHtml += `<tr>
                           <td><img src=${p.image}></td>
                           <td>${p.name}</td>
@@ -19,9 +19,11 @@ function showAutosTable(autosList){
                           <td>${p.soldCount}</td>
                        </tr>`;
     }
-    document.getElementById("tautos").innerHTML = productsHtml;
+    document.getElementById("tproducts").innerHTML = productsHtml;
 }
 
 document.addEventListener("DOMContentLoaded",function(){
-    getAutos("https://japceibal.github.io/emercado-api/cats_products/101.json");
+    let catID = localStorage.getItem("catID")
+    getProducts("https://japceibal.github.io/emercado-api/cats_products/" + catID + ".json");
 });
+
