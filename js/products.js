@@ -125,3 +125,14 @@ document.addEventListener("DOMContentLoaded", function () {
         showProductsList();
     });
 });
+
+//evento para el buscador 
+document.getElementById("buscador").addEventListener("input", function () {  
+    let inputSearch = document.getElementById("buscador").value.toLowerCase(); //esta variable guarda lo que el usuario va ingresando 
+                                                                                //y lo convierte a minúscula para que la búsqueda no distinga entre mayúscula y minúscula
+    let filteredProducts = listaproducts.filter(product => {                   
+        return product.name.toLowerCase().includes(inputSearch) || //Cambia el nombre y descripcion a minuscula luego, aca includes compara para ver si el inputsearch esta en el nombre
+            product.description.toLowerCase().includes(inputSearch);//o en la descripcion
+    });
+    showProductsTable(filteredProducts);
+});

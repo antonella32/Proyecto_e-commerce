@@ -45,6 +45,12 @@
             <div class="row">
                 <div class="col text-end">
                     <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+                        <!--Aca va el buscador del desafiate-->
+                        <div class="input-container">
+                             <i class="fa fa-search"></i>
+                             <input class="form-control" type="search" id="buscador" placeholder="Encuentre...">
+                          </div>
+                         
                         <input type="radio" class="btn-check" name="options" id="sortAsc">
                         <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>Precio Asc.</label>
 
@@ -86,7 +92,7 @@
                         <!-- En la tabla cambiamos lo que decia autos por products para hacerlo de forma general para todas las categorias -->
 
             <div id="products">
-                <table>
+                <table id="tablaProd">
                     <thead>
                         <tr>
                             <th class="header-image">Imagen</th>

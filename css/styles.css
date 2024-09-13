@@ -348,3 +348,32 @@ table td img {
   box-shadow: 5px 5px 0px  rgba(30, 55, 90, 0.9);
   min-width: 30px;
 }
+
+.input-container {
+  position: relative;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+
+
+/* Estilos de los botones para filtrar*/
+
+.fas, .fa-sort-amount-down, .mr-1
+{ 
+  padding: 10px;
+  
+}
+
+.input-container i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.input-container input {
+  padding-left: 35px;
+}
+
