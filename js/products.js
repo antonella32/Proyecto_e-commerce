@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
     getJSONData("https://japceibal.github.io/emercado-api/cats_products/101.json")
         .then(function(result) {
             if (result.status === "ok") {
-                // Llamas a la función para mostrar los autos en la tabla
-                showAutosTable(result.data.products); // Asegúrate de acceder a la propiedad "products"
+                
+                showAutosTable(result.data.products); 
             } else {
                 console.error("Error al obtener los datos", result.data);
             }
