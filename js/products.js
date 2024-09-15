@@ -8,7 +8,8 @@ function getProducts(url){   //Hicimos una pequeña modificacion en la funcion, 
         listaproducts=lista.products //definimos listaproducts para usarlo despues
         showProductsTable(listaproducts);
     })
-}
+} 
+//
 
 
 const ORDER_ASC_BY_COST = "asc_cost";   //definimos constantes para cada criterio 
