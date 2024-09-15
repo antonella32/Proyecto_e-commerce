@@ -22,6 +22,7 @@ let maxCost = undefined;
 function showProductsTable(productsList) {
     let productsHtml = "";
     for (let p of productsList) {
+<<<<<<< Updated upstream
         productsHtml += `<tr data-id="${p.id}">
                             <td><img src="${p.image}" alt="${p.name}"></td>
                             <td>${p.name}</td>
@@ -29,6 +30,17 @@ function showProductsTable(productsList) {
                             <td>${p.cost}</td>
                             <td>${p.soldCount}</td>
                         </tr>`;
+=======
+        productsHtml += 
+        `
+            <tr data-id="${p.id}">
+                <td><img src="${p.image}" alt="${p.name}"></td>
+                <td>${p.name}</td>
+                <td>${p.description}</td>
+                <td>${p.cost}</td>
+                <td>${p.soldCount}</td>
+            </tr>`;
+>>>>>>> Stashed changes
     }
     document.getElementById("tproducts").innerHTML = productsHtml;
 }
@@ -123,6 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         showProductsList();
+
+        verificarSesion();
     });
 });
 
@@ -136,6 +150,7 @@ document.getElementById("buscador").addEventListener("input", function () {
     });
     showProductsTable(filteredProducts);
 });
+<<<<<<< Updated upstream
 // Se hace un evento para la fila en la que el usuario hace click
 document.getElementById("tproducts").addEventListener("click", function (event) {
     // Verifica si el clic fue en una fila <tr>
@@ -146,3 +161,32 @@ document.getElementById("tproducts").addEventListener("click", function (event) 
         window.location.href = "product-info.html";
     }
 });
+=======
+
+//parte 4
+
+document.getElementById("tproducts").addEventListener("click", function (event) {  //cuando se selecciona una fila de tproducts
+    //se guarda el id del producto seleccionado en el localStorage como selectedProductId
+    // y redirige a product info html del producto
+    if (event.target.closest("tr")) {
+        let productId = event.target.closest("tr").dataset.id;
+        localStorage.setItem("selectedProductId", productId);
+        window.location.href = "product-info.html";
+    }
+});
+
+//arreglo del usuario
+function verificarSesion() {
+    var user = localStorage.getItem("usuario");
+    console.log('Usuario en localStorage:', user); 
+    if (localStorage.getItem("isLoggedIn") === "true" && user) {
+        document.getElementById("user-navbar").textContent = `${user}`;
+    }
+    else {
+        window.Location.href = "login.html";
+    }
+}
+
+
+
+>>>>>>> Stashed changes

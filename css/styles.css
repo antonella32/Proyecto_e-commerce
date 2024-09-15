@@ -286,17 +286,23 @@ table th:nth-child(5) {
   
 }
 
-table td:nth-child(4) {
+#tablaProd td:nth-child(4) {
   text-align: center;
   font-weight: bold;
   background-color:  hwb(0 100% 0%);
 font-size: larger;  
   
 }
-table tbody tr {
+
+#tablaProd tbody tr {
   box-shadow: 3px 3px 3px rgba(30, 55, 90, 0.9);
 }
+<<<<<<< Updated upstream
 #tablaProd tbody tr:hover {
+=======
+#tablaProd tbody tr:hover {  /* Cambio para solo hover en la tabla de productos donde se puede hacer click*/
+
+>>>>>>> Stashed changes
   background-color: #f0f8ff; 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
   transform: scale(1.03);
@@ -377,6 +383,17 @@ table td img {
   padding-left: 35px;
 }
 
+<<<<<<< Updated upstream
+=======
+.texto-izq {
+  margin-right: auto
+  
+}
+
+.texto-der {
+  margin-left: auto;
+}
+>>>>>>> Stashed changes
 
 .flex-container {
   display: flex;
@@ -384,6 +401,12 @@ table td img {
   width: 100%;
 }
 
+<<<<<<< Updated upstream
+=======
+
+/* Entrega 4*
+/
+>>>>>>> Stashed changes
 /* ESTILOS PARA LA FILA DE LAS FOTOS */
 #filadecarousel {
   display: flex;
@@ -410,13 +433,22 @@ table td img {
   transform: translateY(-50%); 
   background-color: #00ABE4; 
   border: 2px solid #ffffff; 
+<<<<<<< Updated upstream
   border-radius: 30%; /* Forma para los botones */
+=======
+  border-radius: 10%; /* Forma para los botones */
+>>>>>>> Stashed changes
   padding: 10px; 
   cursor: pointer; /* Indica que se puede hacer click en el boton, cambia el cursor */
   z-index: 10; 
   font-size: 24px; /* Tamaño del ícono de los botones */
+<<<<<<< Updated upstream
   width: 40px; /* Ancho de los botones */
   height: 40px; /* Altura de los botones */
+=======
+  width: 40px; /*botones */
+  height: 40px; /*botones */
+>>>>>>> Stashed changes
   display: flex; 
   justify-content: center; 
   align-items: center;
@@ -446,6 +478,7 @@ table td img {
 #productImages img {
   max-width: 100%; 
   height: auto; 
+<<<<<<< Updated upstream
 
 }
 #tinfoprod .headerSoldCount {
@@ -458,3 +491,25 @@ table td img {
 #tinfoprod .headerSoldCount td {
   padding: 10px; /* Espaciado opcional alrededor del contenido */
 } 
+=======
+}
+
+.headerSoldCount span
+{
+  font-weight: bold;
+ 
+  border-left: none;
+  border-right: none;
+  color: #000000;
+  margin: 0;
+  padding: 10px;
+  font-size: 90%;
+  text-shadow: 1px 1px 0px hwb(0 48% 52%);
+  
+}
+
+#tinfoprod 
+{
+  background-color: #E9F1FA;
+}
+>>>>>>> Stashed changes
