@@ -450,6 +450,7 @@ table td img {
 #tinfoprod .headerSoldCount {
   color: #000000; 
   font-weight: bold;
+  text-shadow: 1px 1px 0px hwb(0 48% 52%);
 }
 
 /* Asegura que el estilo se aplique a todas las celdas de la fila */

@@ -136,13 +136,13 @@ document.getElementById("buscador").addEventListener("input", function () {
     });
     showProductsTable(filteredProducts);
 });
-
+// Se hace un evento para la fila en la que el usuario hace click
 document.getElementById("tproducts").addEventListener("click", function (event) {
     // Verifica si el clic fue en una fila <tr>
     let row = event.target.closest("tr");
     if (row) {
         let productId = row.dataset.id;
-        localStorage.setItem("selectedProductId", productId);
+        localStorage.setItem("selectedProductId", productId); // Guarda el id del producto de esa fila
         window.location.href = "product-info.html";
     }
 });
