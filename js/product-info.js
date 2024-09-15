@@ -41,7 +41,7 @@ function showProductInfoTable(product) {           //Basado en showproducts tabl
     } 
         categoryElement.querySelector('.texto-der').innerText = product.soldCount; //añade la cant de vendidos del producto seleccionado
     
-    const nameElement = document.querySelector("thead th.header-name");
+    const nameElement = document.querySelector("thead .header-name");
     if (nameElement) {
         nameElement.innerText = product.name; //añade el nombre del producto seleccionado
     } 

@@ -241,7 +241,7 @@ a.custom-card:hover {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-table {
+#tablaProd {
   width: 100%;
   color: #000000;
   text-align: left;
@@ -252,8 +252,7 @@ table {
   border-spacing: 0 15px;
   font-size: 1.5vw;
 }
-
-table th {
+#tablaProd th {
   border-left: none;
   border-right: none;
   color: rgb(255, 255, 255);
@@ -263,11 +262,11 @@ table th {
   text-shadow: 1px 1px 0px hwb(0 48% 52%);
 }
 
-.container table th {
+ .container #tablaProd th {
   background-color: #00ABE4;
 }
 
-table td {
+#tablaProd td {
   background-color: hwb(0 91% 9%);
   font-size: 100%;
   border-bottom: 1.5px solid #757272;
@@ -275,25 +274,25 @@ table td {
 }
 
 
-table td:nth-child(5) {
+#tablaProd td:nth-child(5) {
   background-color:  #E9F1FA;
   text-align: center;
   border-right:1.5px solid #757272; 
 }
-table th:nth-child(5) {
+#tablaProd th:nth-child(5) {
   text-align: center;
 
   
 }
 
-table td:nth-child(4) {
+#tablaProd td:nth-child(4) {
   text-align: center;
   font-weight: bold;
   background-color:  hwb(0 100% 0%);
 font-size: larger;  
   
 }
-table tbody tr {
+#tablaProd tbody tr {
   box-shadow: 3px 3px 3px rgba(30, 55, 90, 0.9);
 }
 #tablaProd tbody tr:hover {
@@ -303,17 +302,17 @@ table tbody tr {
 }
 
 
-table th:nth-child(4) {
+#tablaProd th:nth-child(4) {
   text-align: center;
 }
 
-table td:nth-child(3) {
+#tablaProd td:nth-child(3) {
   background-color:#ffffff;
   font-size: larger;
   text-align: left;
 }
 
-table td:nth-child(2) {
+#tablaProd td:nth-child(2) {
   text-align: center;
   background-color:  #E9F1FA;
   font-size: 2.5vw;
@@ -324,13 +323,13 @@ table td:nth-child(2) {
 
   
 }
-table th:nth-child(2) {
+#tablaProd th:nth-child(2) {
   text-align: center;
   display: auto;
 
 }
 
-table td:nth-child(1)  {
+#tablaProd td:nth-child(1)  {
   text-align: center;
   background-color:  #E9F1FA;
   border-left:1.5px solid #757272; 
@@ -338,7 +337,7 @@ table td:nth-child(1)  {
 
 
 
-table td img {
+#tablaProd td img {
   max-width: 100%; 
   height: auto; 
   display: block; 
@@ -376,7 +375,7 @@ table td img {
 .input-container input {
   padding-left: 35px;
 }
-
+/* Entrega 3 ESTILOS DE LA TABLA Y CARRUSEL DE FOTOS */
 
 .flex-container {
   display: flex;
@@ -450,47 +449,78 @@ table td img {
   border-radius: 5%;
 }
 
+
+/* estilos de la tabla con la info de los productos */
+#tinfoprod {
+  color: #000000;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  font-size: 1.5vw;
+  width: 100%;
+  background-color: #E9F1FA;
+}
+
+
 #tinfoprod .headerSoldCount {
-  color: #000000; 
+  color: #ABB4BD;
   font-weight: bold;
   text-shadow: 1px 1px 0px hwb(0 48% 52%);
+  background-color: #E9F1FA;
 }
 
-/* Asegura que el estilo se aplique a todas las celdas de la fila */
-#tinfoprod .headerSoldCount td {
-  padding: 10px; /* Espaciado opcional alrededor del contenido */
-} 
 
-#product-info {
+#tinfoprod .header-name
+/* Nombre del producto seleccionado*/ {
   background-color: #00ABE4 !important;
- 
+  border-radius: 0px; 
+  color: white;
+  padding: 10px 20px; 
+  text-align: center;
+  display: inline-block; 
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-#tinfoprod {
-  
+#tinfoprod .header-description
+/* Rectangulo de la descripcion del producto*/
+{
+  background-color: #ffffff !important;
+  border-radius: 20px; 
+  color: rgb(0, 0, 0);
+  padding: 30px 50px; 
+  text-align: center; 
+  display: inline-block; 
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-.header-name-products {
-  background-color: #0087F7 !important;
-}
-
-#filadecarousel {
-  background-color: #daeeff;
-}
-
-#productImagesContainer {
-  background-color: #0f0092 !important;
-  border:#3580e2 groove 5px;
+#productImagesContainer 
+/* Contenedor de las imagenes*/
+{
+  background-color: #1E375A ;
+  border:#00ABE4 groove 2px;
   padding: 2px;
   border-radius: 10px;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-.headerSoldCount {
-  background-color: #000000 !important;
+.headerSoldCount 
+/* subtitulos*/{
+  background-color: #E9F1FA;
 }
 
-.texto-der {
-  color: #0087F7 !important;
+.texto-der 
+/* cantidad de vendidos*/
+{
+  color: #1E375A ;
+  padding-right: 10px;
   
+}
+
+.texto-izq
+/* Categoria*/
+{
+  padding-left: 10px;
+  color: #3e4547;
 }
