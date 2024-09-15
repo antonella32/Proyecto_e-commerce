@@ -19,10 +19,10 @@ let currentSortCriteria = undefined;
 let minCost = undefined;
 let maxCost = undefined;
    
-function showProductsTable(productsList) {   //esta funcion se mantuvo igual
+function showProductsTable(productsList) {
     let productsHtml = "";
     for (let p of productsList) {
-        productsHtml += `<tr>
+        productsHtml += `<tr data-id="${p.id}">
                             <td><img src="${p.image}" alt="${p.name}"></td>
                             <td>${p.name}</td>
                             <td>${p.description}</td>
@@ -135,4 +135,14 @@ document.getElementById("buscador").addEventListener("input", function () {
             product.description.toLowerCase().includes(inputSearch);//o en la descripcion
     });
     showProductsTable(filteredProducts);
+});
+// Se hace un evento para la fila en la que el usuario hace click
+document.getElementById("tproducts").addEventListener("click", function (event) {
+    // Verifica si el clic fue en una fila <tr>
+    let row = event.target.closest("tr");
+    if (row) {
+        let productId = row.dataset.id;
+        localStorage.setItem("selectedProductId", productId); // Guarda el id del producto de esa fila
+        window.location.href = "product-info.html";
+    }
 });

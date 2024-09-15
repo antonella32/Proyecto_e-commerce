@@ -296,7 +296,7 @@ font-size: larger;
 table tbody tr {
   box-shadow: 3px 3px 3px rgba(30, 55, 90, 0.9);
 }
-table tbody tr:hover {
+#tablaProd tbody tr:hover {
   background-color: #f0f8ff; 
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
   transform: scale(1.03);
@@ -377,3 +377,84 @@ table td img {
   padding-left: 35px;
 }
 
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ESTILOS PARA LA FILA DE LAS FOTOS */
+#filadecarousel {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 20px 0; 
+}
+
+/* Contenedor del carrusel */
+#productImagesContainer {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative; 
+  width: 100%; 
+}
+
+/* BOTONES PARA IR PASANDO LAS FOTOS DE LOS PRODUCTOS */
+
+/* ESTILO DE LOS BOTONES */
+.carousel-button {
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  background-color: #00ABE4; 
+  border: 2px solid #ffffff; 
+  border-radius: 30%; /* Forma para los botones */
+  padding: 10px; 
+  cursor: pointer; /* Indica que se puede hacer click en el boton, cambia el cursor */
+  z-index: 10; 
+  font-size: 24px; /* Tamaño del ícono de los botones */
+  width: 40px; /* Ancho de los botones */
+  height: 40px; /* Altura de los botones */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+/* Boton de ir para atras */
+.carousel-button.prev {
+  left: 10px; 
+}
+
+/* Boton de ir para adelante */
+.carousel-button.next {
+  right: 10px; 
+}
+
+/* Estilo del carrusel de fotos */
+.carousel {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  width: auto; 
+  height: auto; 
+  overflow: hidden; 
+}
+
+/* Imágenes dentro del carrusel */
+#productImages img {
+  max-width: 100%; 
+  height: auto; 
+
+}
+#tinfoprod .headerSoldCount {
+  color: #000000; 
+  font-weight: bold;
+  text-shadow: 1px 1px 0px hwb(0 48% 52%);
+}
+
+/* Asegura que el estilo se aplique a todas las celdas de la fila */
+#tinfoprod .headerSoldCount td {
+  padding: 10px; /* Espaciado opcional alrededor del contenido */
+} 
