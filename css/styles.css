@@ -406,7 +406,7 @@ table td img {
 /* ESTILO DE LOS BOTONES */
 .carousel-button {
   position: absolute; 
-  top: 50%; 
+  top: 90%; 
   transform: translateY(-50%); 
   background-color: #00ABE4; 
   border: 2px solid #ffffff; 
@@ -414,12 +414,13 @@ table td img {
   padding: 10px; 
   cursor: pointer; /* Indica que se puede hacer click en el boton, cambia el cursor */
   z-index: 10; 
-  font-size: 24px; /* Tamaño del ícono de los botones */
-  width: 40px; /* Ancho de los botones */
-  height: 40px; /* Altura de los botones */
+  font-size: 10px; /* Tamaño del ícono de los botones */
+  width: 30px; /* Ancho de los botones */
+  height: 30px; /* Altura de los botones */
   display: flex; 
   justify-content: center; 
   align-items: center;
+  opacity: 0.7;
 }
 
 /* Boton de ir para atras */
@@ -446,8 +447,9 @@ table td img {
 #productImages img {
   max-width: 100%; 
   height: auto; 
-
+  border-radius: 5%;
 }
+
 #tinfoprod .headerSoldCount {
   color: #000000; 
   font-weight: bold;
@@ -458,3 +460,37 @@ table td img {
 #tinfoprod .headerSoldCount td {
   padding: 10px; /* Espaciado opcional alrededor del contenido */
 } 
+
+#product-info {
+  background-color: #00ABE4 !important;
+ 
+}
+
+#tinfoprod {
+  
+}
+
+.header-name-products {
+  background-color: #0087F7 !important;
+}
+
+#filadecarousel {
+  background-color: #daeeff;
+}
+
+#productImagesContainer {
+  background-color: #0f0092 !important;
+  border:#3580e2 groove 5px;
+  padding: 2px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
+}
+
+.headerSoldCount {
+  background-color: #000000 !important;
+}
+
+.texto-der {
+  color: #0087F7 !important;
+  
+}
