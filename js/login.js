@@ -17,7 +17,7 @@ function verificarSesion() {
     if (localStorage.getItem("isLoggedIn") === "true" && user) {
         document.getElementById("user-navbar").textContent = `${user}`;
     } 
-    else if (window.location.pathname !== "/login.html") {
+    else if (!window.location.pathname.endsWith("/login.html")){
         window.location.href = "login.html";
     } 
 }
