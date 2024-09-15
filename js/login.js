@@ -24,3 +24,5 @@ function verificarSesion() {
 document.addEventListener("DOMContentLoaded", function() {
     verificarSesion();
 });
+
+console.log("login.js cargado correctamente");
