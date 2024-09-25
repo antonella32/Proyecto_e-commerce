@@ -1,18 +1,17 @@
-let originalList = []; //
+let originalList = []; // 
 
-function getProducts(url){   //Hicimos una pequeña modificacion en la funcion, cambiamos donde decia autos a products
-    return fetch(url)
-    .then(respuesta => {
-        return respuesta.json(); 
+function getProducts(url) {
+    return getJSONData(url)
+    .then(result => {
+        if (result.status === 'ok') {
+            originalList = result.data.products; // accede a los productos desde los datos obtenidos
+            listaproducts = originalList; // define listaproducts para usarlo después
+            showProductsTable(listaproducts); // muestra los productos en la tabla
+        } else {
+            console.error('Error al obtener los productos:', result.data); //error si no obtiene los datos
+        }
     })
-    .then(lista => {
-        originalList = lista.products; //
-        listaproducts = originalList //definimos listaproducts para usarlo despues   //
-        showProductsTable(listaproducts);
-    })
-} 
-//
-
+}    
 
 const ORDER_ASC_BY_COST = "asc_cost";   //definimos constantes para cada criterio 
 const ORDER_DESC_BY_COST = "desc_cost";
@@ -52,7 +51,7 @@ function sortProducts(criteria, array) {    //Esta funcion es para ordenar a los
             let aCost = parseInt(a.cost);
             let bCost = parseInt(b.cost);
             if ( aCost > bCost ){ return -1; }
-            if ( a.Cost < b.Cost ){ return 1; }
+            if ( aCost < bCost ){ return 1; }
             return 0;
         });
     } else if (criteria === ORDER_BY_PROD_COUNT) { //tambien ordena por relevancia, es decir, cantidad de vendidos
@@ -69,7 +68,7 @@ function sortProducts(criteria, array) {    //Esta funcion es para ordenar a los
 
 function sortAndShowProducts(sortCriteria) {
     currentSortCriteria = sortCriteria;
-    listaproducts = sortProducts(currentSortCriteria, [...listaproducts]);  //
+    listaproducts = sortProducts(currentSortCriteria, [...listaproducts]); 
     showProductsTable(listaproducts);
 }   //muestra la tabla con los productos ordenados
 
