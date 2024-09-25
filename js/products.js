@@ -1,3 +1,4 @@
+let originalList = []; //
 
 function getProducts(url){   //Hicimos una pequeña modificacion en la funcion, cambiamos donde decia autos a products
     return fetch(url)
@@ -5,7 +6,8 @@ function getProducts(url){   //Hicimos una pequeña modificacion en la funcion, 
         return respuesta.json(); 
     })
     .then(lista => {
-        listaproducts=lista.products //definimos listaproducts para usarlo despues
+        originalList = lista.products; //
+        listaproducts = originalList //definimos listaproducts para usarlo despues   //
         showProductsTable(listaproducts);
     })
 } 
@@ -67,7 +69,7 @@ function sortProducts(criteria, array) {    //Esta funcion es para ordenar a los
 
 function sortAndShowProducts(sortCriteria) {
     currentSortCriteria = sortCriteria;
-    listaproducts = sortProducts(currentSortCriteria, listaproducts);
+    listaproducts = sortProducts(currentSortCriteria, [...listaproducts]);  //
     showProductsTable(listaproducts);
 }   //muestra la tabla con los productos ordenados
 
@@ -131,10 +133,11 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("buscador").addEventListener("input", function () {  
     let inputSearch = document.getElementById("buscador").value.toLowerCase(); //esta variable guarda lo que el usuario va ingresando 
                                                                                 //y lo convierte a minúscula para que la búsqueda no distinga entre mayúscula y minúscula
-    let filteredProducts = listaproducts.filter(product => {                   
+    let filteredProducts = originalList.filter(product => {                   
         return product.name.toLowerCase().includes(inputSearch) || //Cambia el nombre y descripcion a minuscula luego, aca includes compara para ver si el inputsearch esta en el nombre
             product.description.toLowerCase().includes(inputSearch);//o en la descripcion
     });
+    listaproducts = filteredProducts;
     showProductsTable(filteredProducts);
 });
 // Se hace un evento para la fila en la que el usuario hace click
