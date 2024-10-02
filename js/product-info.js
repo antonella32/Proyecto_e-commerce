@@ -1,5 +1,6 @@
+let productId = localStorage.getItem("selectedProductId") //toma el id del producto seleccionado
+
 document.addEventListener("DOMContentLoaded", function () {
-    const productId = localStorage.getItem("selectedProductId"); //toma el id del producto seleccionado
 
     if (productId) {
         //se define el url de json para los detalles del producto
@@ -9,8 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())  //pasa a formato json
             .then(product => {
                 showProductInfoTable(product);
+
+                showRelatedProducts(product.relatedProducts);
             })
-            
+        
+        let url= `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+        fetch(url)
+        .then(response => response.json())
+        .then(comments => {
+            showProductsCalifications(comments)
+        })  
     } 
 }); 
 
@@ -68,4 +77,63 @@ function showProductInfoTable(product) {           //Basado en showproducts tabl
 
     // Inicializa el carrusel al cargar
     updateCarousel();
+}
+
+
+let originalList = []; // 
+
+function showProductsCalifications(userdata) {
+    let productsHtml = "";
+    for (let p of userdata) {
+        productsHtml += `<tr data-id="${p.id}">
+
+                            <td>${p.product}</td>
+                            <td>${p.score}</td>
+                            <td>${p.description}</td>
+                            <td>${p.user}</td>
+                            <td>${p.dateTime}</td>
+                        </tr>`;
+    }
+    document.getElementById("ratings-list").innerHTML = productsHtml;
+}
+
+function showRelatedProducts(relatedProducts) {
+    let productsHtml = "";
+    for (let p of relatedProducts) {
+        productsHtml += `
+                            <td>${p.name}</td>
+                            <td><img src="${p.image}" alt="${p.name}" class="product-image" data-id="${p.id}"></td>
+                        </tr>`;
+    }
+    document.getElementById("related-products-list").innerHTML = productsHtml;
+
+    // seleccionamos las imágenes con la clase 'product-image'
+    const images = document.querySelectorAll(".product-image");
+    images.forEach(img => {
+        img.addEventListener("click", function () {
+            let relatedProductId = this.dataset.id; //obtener id del related product
+
+            // se hace fetch con el id del producto relacionado seleccionado
+            const productUrl = `https://japceibal.github.io/emercado-api/products/${relatedProductId}.json`;
+
+            fetch(productUrl)
+                .then(response => response.json())
+                .then(product => {
+                    showProductInfoTable(product); // actualiza la tabla 
+                    showRelatedProducts(product.relatedProducts); // muestra productos relacionados
+                    window.scrollTo(0, 0);
+                })
+                .catch(error => console.error("Error al cargar el producto:", error));
+        });
+    });
+}
+
+//prueba para agregar el comentario de la calificación en el párrafo p
+document.getElementById("enviar").addEventListener("click", sendCalification);
+function sendCalification() {
+
+    let comentario = document.getElementById("comment").value;
+    let estrellas = document.getElementById("rating").value
+    let usuario = document.getElementById("username").value
+    document.getElementById("newCalification").innerHTML = usuario + comentario + estrellas;
 }

@@ -524,3 +524,16 @@ font-size: larger;
   padding-left: 10px;
   color: #3e4547;
 }
+
+/* ENTREGA 4*/
+.calificaciones, .form_calificaciones, .productos_relacionados{
+  color: #000000;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  font-size: 1.5vw;
+  width: 100%;
+  background-color: #E9F1FA;
+}
