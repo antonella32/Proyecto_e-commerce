@@ -318,7 +318,7 @@ font-size: larger;
   font-size: 2.5vw;
   font-weight: bold;
   text-shadow: 0px 2px 2px #3e4547; 
-  color:  rgba(30, 55, 90, 0.9);
+  color:  #1e375ae6;
   display: auto;
 
   
@@ -524,16 +524,123 @@ font-size: larger;
   padding-left: 10px;
   color: #3e4547;
 }
-
+/* --------------------------------------------------------------------------------------------------------------------*/
 /* ENTREGA 4*/
-.calificaciones, .form_calificaciones, .productos_relacionados{
-  color: #000000;
-  margin: 0 auto;
-  text-align: center;
-  vertical-align: middle;
-  border-collapse: separate;
-  border-spacing: 0 15px;
-  font-size: 1.5vw;
-  width: 100%;
-  background-color: #E9F1FA;
+.related-product-cell {
+  text-align: center;  /* Centra la imagen y el texto */
+  padding: 10px;
+}
+
+.relatedproductname {
+  margin-top: 10px;   /* Espacio entre la imagen y el nombre */
+  font-weight: bold;
+}
+ /* IMAGENES DE LOS PRODUCTOS RELACIONADOS*/
+.relatedproduct-image {
+  width: 60%; 
+  height: auto;
+  border-radius: 20px;
+}
+
+.relatedproduct-image:hover {
+  box-shadow: 0 0 8px #1e375ae6;/* Sombra azul */
+  transform: scale(1.05); /* zoom al pasar el mouse*/
+  cursor: pointer; 
+}
+#ratings-section
+{
+  background-color:#E9F1FA
+}
+.calification-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  position: relative; /* Permite el posicionamiento de elementos en esquinas */
+}
+
+.calification-header {
+  display: flex;
+  justify-content: space-between; /* Distribuye el usuario y la fecha en esquinas opuestas */
+  margin-bottom: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.calification-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.calification-stars {
+  margin-bottom: 10px;
+}
+
+ /*ESTILOS DEL FORM*/
+/* Estilo general para el contenedor del formulario */
+#rating-form {
+  max-width: 600px; 
+  margin: 20px auto; /* Centra el formulario horizontalmente */
+  padding: 20px; 
+  background-color: #f8f9fa; /* Color de fondo claro */
+  border: 1px solid #ced4da; /* Borde gris claro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilo para los elementos del formulario */
+.form-group {
+  margin-bottom: 8px; /* Espacio entre elementos */
+}
+
+/* Estilo para las etiquetas */
+label {
+  font-weight: bold; /* Negrita para las etiquetas */
+  margin-bottom: 4px; 
+  display: block; 
+}
+
+
+.form-control {
+  width: 100%; 
+  padding: 6px; 
+  height: 36px; 
+  border: 1px solid #ced4da; 
+  border-radius: 4px; 
+  transition: border-color 0.3s; 
+}
+
+/* Estilo específico para el textarea */
+#comment {
+  height: 60px; 
+}
+
+/* Cambia el color del borde al enfocar */
+.form-control:focus {
+  border-color: #80bdff; 
+  outline: none;
+}
+
+/* Estilo para el botón */
+.btn {
+  width: 100%; 
+  padding: 8px;
+  background-color: #007bff; 
+  color: white; 
+  border: none;
+  border-radius: 4px; 
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s; 
+}
+
+/* Cambia el color del botón al pasar el mouse */
+.btn:hover {
+  background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+.titulodeseccion
+{
+ text-align: center;
 }
