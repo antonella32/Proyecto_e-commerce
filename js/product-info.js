@@ -161,6 +161,8 @@ function sendCalification() {
     let comentario = document.getElementById("comment").value;
     let estrellas = document.getElementById("rating").value;
     let usuario = document.getElementById("username").value;
+    
+    if(comentario !== "" && estrellas !== "" && usuario !=="" ){
 
     //se crea un objeto para la nueva calificacion
         const newCalification = {
@@ -180,4 +182,9 @@ function sendCalification() {
 
     // una vez enviado se limpia el formulario
     document.getElementById("rating-form").reset();
+    }
+
+else{
+    alert("Por favor complete todos los campos")
+    }
 }
