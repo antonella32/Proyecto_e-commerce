@@ -153,7 +153,7 @@ function showRelatedProducts(relatedProducts) {
     });
 }
 
-//prueba para agregar el comentario de la calificación en el párrafo p
+//funcion para agregar la calificacion ingresada por el usuario 
 document.getElementById("enviar").addEventListener("click", sendCalification);
 
 function sendCalification() {
