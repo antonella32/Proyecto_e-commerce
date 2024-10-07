@@ -624,7 +624,7 @@ label {
 }
 
 /* Estilo para el botón */
-.btn {
+.botondelform {
   width: 100%; 
   padding: 8px;
   background-color: #007bff; 
@@ -636,7 +636,7 @@ label {
 }
 
 /* Cambia el color del botón al pasar el mouse */
-.btn:hover {
+.botondelform:hover {
   background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
 }
 
