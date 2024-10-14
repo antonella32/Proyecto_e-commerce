@@ -55,9 +55,36 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+   <!--ENTREGA 5!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div id="profileinfo">
+      <div class="container">
+        <img src="img/car1.jpg" alt="Foto de perfil" id="profile-pic" width="150">
+        <p><strong>Nombre:</strong> <span id="display-name"></span></p>
+        <p><strong>Segundo Nombre:</strong> <span id="display-second-name"></span></p>
+        <p><strong>Apellido:</strong> <span id="display-last-name"></span></p>
+        <p><strong>Segundo Apellido:</strong> <span id="display-second-last-name"></span></p>
+        <p><strong>Email:</strong> <span id="display-email"></span></p>
+        <p><strong>Teléfono:</strong> <span id="display-phone"></span></p>
       </div>
+       </div>
+       <div id="profile form">
+        <form action="">
+          <label for="name">Nombre</label>
+          <input type="text" name="nombre" id="name" placeholder="Nombre" required>
+          <label for="name">Segundo Nombre</label>
+          <input type="text" name=" segundo nombre" id="secondname"  placeholder=" Segundo Nombre">
+          <label for="last name">Apellido</label>
+          <input type="text" name="apellido" id="last-name" required placeholder="Apellido">
+          <label for="last name">Segundo Apellido</label>
+          <input type="text" name="segundo apellido" id="secondlast-name" placeholder="Segundo Apellido">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email"  value="" >
+          <label for="phone">Telefono </label>
+          <input type="tel" name="phone" id="phone" placeholder="Telefono">
+          <button type="submit" id="save-changes"> Guardar Cambios</button>
+         </form>
+       </div>
+    
     </div>
   </main>
   <footer class="text-muted">

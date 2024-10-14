@@ -13,6 +13,63 @@ nav a {
   text-decoration: none;
 }
 
+/* Para la entrega 5 cambiamos el diseño de la barra de navegación*/
+/* Modificaciones del navbar en el header*/
+
+.navbar {
+  background: linear-gradient(135deg, #343a40, #495057);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.nav-link {
+  color: #ffffff; 
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 5px;
+  position: relative; 
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #53C0FB !important; 
+  transform: translateY(-2px);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #53C0FB; 
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1); 
+}
+
+.nav-link.active {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid #53C0FB !important; 
+}
+
+.nav-item {
+  margin: 0 10px; 
+}
+
+/* Fin de modificaciones del navbar en el header*/
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -453,7 +510,7 @@ font-size: larger;
 /* estilos de la tabla con la info de los productos */
 #tinfoprod {
   color: #000000;
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
   vertical-align: middle;
   border-collapse: separate;
