@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtener referencias a los elementos del DOM
+    // Obtener del DOM los datos que se muestran en pantalla 
     const displayName = document.getElementById('display-name');
     const displaySecondName = document.getElementById('display-second-name');
     const displayLastName = document.getElementById('display-last-name');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const displayEmail = document.getElementById('display-email');
     const displayPhone = document.getElementById('display-phone');
 
-    // Campos del formulario
+    // Aca se obtienen los inputs del formulario
     const nameField = document.getElementById('name');
     const secondNameField = document.getElementById('secondname');
     const lastNameField = document.getElementById('last-name');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailField = document.getElementById('email');
     const phoneField = document.getElementById('phone');
 
-    // Cargar datos del almacenamiento local (si existen)
+    // Se toman los datos del userprofile del local storage
     const savedProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
 
     // Mostrar datos guardados en el div de perfil
@@ -26,39 +26,42 @@ document.addEventListener('DOMContentLoaded', function () {
     displayEmail.textContent = savedProfile.email || '';
     displayPhone.textContent = savedProfile.phone || '';
 
-    // Prellenar el formulario con los valores actuales
-    nameField.value = savedProfile.name || '';
-    secondNameField.value = savedProfile.secondName || '';
-    lastNameField.value = savedProfile.lastName || '';
-    secondLastNameField.value = savedProfile.secondLastName || '';
-    phoneField.value = savedProfile.phone || '';
 
-    // Si ya hay un email guardado, hacer que el campo sea de solo lectura (no editable)
-    if (savedProfile.email) {
+       //Formulario pre-rellenado 
+       nameField.value = savedProfile.name || '';
+       secondNameField.value = savedProfile.secondName || '';
+       lastNameField.value = savedProfile.lastName || '';
+       secondLastNameField.value = savedProfile.secondLastName || '';
+       emailField.value = savedProfile.email || '';
+       phoneField.value = savedProfile.phone || ''; 
+
+
+    // Si ya hay un email guardado, no se puede editar
+    if (savedProfile.email) { // Se usa un if para poner la condicion
         emailField.value = savedProfile.email;
-        emailField.readOnly = true; // El email no se puede modificar
-    }
+        emailField.readOnly = true; // readOnly se usa para que no sea editable
+    } // Aquí se cierra el bloque if
 
-    // Función para guardar y mostrar los datos cuando el formulario se envía
+    // Función para guardar los datos del form y mostrarlos
     document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+        event.preventDefault(); // Se usa preventDefault para guardar los datos en local storage sin recargar la pag
 
-        // Validar que los campos obligatorios no estén vacíos
+        // Se usa la condicion para los campos obligatorios
         if (nameField.value && lastNameField.value && emailField.value) {
-            // Crear un objeto con todos los datos del formulario
+            // Se crea un objeto con los datos que fueron ingresados en los fields del formulario
             const userProfile = {
                 name: nameField.value,
                 secondName: secondNameField.value,
                 lastName: lastNameField.value,
                 secondLastName: secondLastNameField.value,
-                email: emailField.value, // El email no se modifica después del primer guardado
+                email: emailField.value, // El valor de email que después no se puede modificar
                 phone: phoneField.value
             };
 
-            // Convertir el objeto a JSON y guardarlo en localStorage
+            // Se toma el objeto creado userProfile y se pasa a formato JSON y se usa stringify para guardar en el localStorage
             localStorage.setItem('userProfile', JSON.stringify(userProfile));
 
-            // Mostrar los datos guardados en el div de perfil
+            // Se muestran luego los datos guardados en el div creado para mostrar los datos display
             displayName.textContent = userProfile.name;
             displaySecondName.textContent = userProfile.secondName;
             displayLastName.textContent = userProfile.lastName;
@@ -66,15 +69,18 @@ document.addEventListener('DOMContentLoaded', function () {
             displayEmail.textContent = userProfile.email;
             displayPhone.textContent = userProfile.phone;
 
-            // Bloquear el campo de email si es la primera vez que se guarda
-            if (!savedProfile.email) {
-                emailField.readOnly = true;
-            }
+            // Ocultar el formulario después de guardar los cambios
+            document.getElementById('profile-form').style.display = 'none';
 
-            // Mostrar un mensaje de éxito
-            alert('Datos guardados exitosamente.');
+            alert('Se guardaron los datos exitosamente'); // Alerta para mostrar que se guardaron los datos
         } else {
-            alert('Por favor, completa los campos obligatorios.');
+            alert('Complete los campos obligatorios'); // Alerta si falta completar datos obligatorios
         }
+    });
+
+    // Manejo del evento para mostrar el formulario al hacer clic en "Editar Información"
+    document.getElementById('edit-profileinfo').addEventListener('click', function () {
+        var form = document.getElementById('profile-form');
+        form.style.display = 'block'; // Muestra el formulario
     });
 });
