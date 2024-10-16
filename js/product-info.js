@@ -188,3 +188,30 @@ else{
     alert("Por favor complete todos los campos")
     }
 }
+
+//ENTREGA 5 PARTE 4 MODO DIA MODO NOCHE//
+
+document.getElementById("modeSwitch").addEventListener("change", function () {
+    const body = document.body;
+    const isDarkMode = this.checked;  // Verificar si el switch está activado
+  
+    // Cambiar el modo agregando o quitando la clase dark-mode
+    body.classList.toggle("dark-mode", isDarkMode);
+  
+    // Cambiar el texto del label
+    document.querySelector("label[for='modeSwitch']").textContent = isDarkMode ? "Modo Día" : "Modo Noche";
+  
+    // Guardar el modo en localStorage
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  });
+  
+  // Aplicar el modo guardado al cargar la página
+  window.addEventListener("load", function () {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+      document.getElementById("modeSwitch").checked = true;  // Activar el switch
+      document.querySelector("label[for='modeSwitch']").textContent = "Modo Día";
+    }
+  });
+  
