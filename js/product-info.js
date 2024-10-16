@@ -154,15 +154,19 @@ function showRelatedProducts(relatedProducts) {
 }
 
 //funcion para agregar la calificacion ingresada por el usuario 
-document.getElementById("enviar").addEventListener("click", sendCalification);
+
+let usuario = localStorage.getItem("usuario") //se obtiene el nombre de usuario guardado en localStorage
+
+document.getElementById("username").textContent = usuario //se agrega ese uruario en el label "username" del formulario "rating-form"
+
+document.getElementById("enviar").addEventListener("click", sendCalification); 
 
 function sendCalification() {
     //se obtienen los datos del formulario
     let comentario = document.getElementById("comment").value;
     let estrellas = document.getElementById("rating").value;
-    let usuario = document.getElementById("username").value;
     
-    if(comentario !== "" && estrellas !== "" && usuario !=="" ){
+    if(comentario !== "" && estrellas !== ""){
 
     //se crea un objeto para la nueva calificacion
         const newCalification = {
@@ -177,10 +181,10 @@ function sendCalification() {
     // Agregar la nueva calificación al array 
     originalList.unshift(newCalification);  // se agrega al inicio de originalList que ya tenia todos los comentarios del json pre cargados
 
-    //muestra todas las calificaciones incluyendo la nueva arriba del todo
+    //Muestra todas las calificaciones incluyendo la nueva arriba del todo
     showProductsCalifications(originalList);
 
-    // una vez enviado se limpia el formulario
+    //Una vez enviado se limpia el formulario
     document.getElementById("rating-form").reset();
     }
 
