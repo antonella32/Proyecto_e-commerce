@@ -726,7 +726,8 @@ body.dark-mode {
 body.dark-mode .navbar {
   background: linear-gradient(135deg, #212529, #343a40);
 }
-/* ENTREGA 5 estilos para el div de los datos display EDITARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR */
+
+/* ENTREGA 5 estilos para el div de los datos display */
 #profile-section {
   display: flex; /* Usar flexbox para alinear el perfil y el formulario */
   flex-direction: column; /* Mantener los elementos en columna */
@@ -790,16 +791,23 @@ body.dark-mode .btn {
   color: white;
 }
 
-body.dark-mode #tinfoprod .header-description {
+body.dark-mode #tinfoprod .header-description  {
   border: 1px solid white; /* Borde blanco en Modo Noche */
 }
+
+body.dark-mode .fila-profile span {
+  background-color: #181818; /* Fondo oscuro en modo oscuro */
+  color: white; /* Color del texto en modo oscuro */
+}
+
 .fila-profile span {
   text-align: left; 
-  background-color: white; /* Fondo blanco para el span */
+  background-color: rgb(255, 255, 255); /* Fondo blanco para el span */
   border: 1px solid blue; /* Borde azul */
   border-radius: 4px; 
   padding: 5px; 
 }
+
 
 #edit-profileinfo {
   background-color: #53C0FB; 
@@ -853,11 +861,34 @@ body.dark-mode #tinfoprod .header-description {
   transition: background-color 0.3s, transform 0.2s; 
 }
 
-#save-changes:hover {
+#customButton
+{
+  background-color: #53C0FB; 
+  color: #343a40; 
+    border: none; 
+  border-radius: 4px; 
+  padding: 5px 7px; 
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+#saveProfileImage
+{
+  background-color: #53C0FB; 
+  color: #343a40; 
+    border: none; 
+  border-radius: 4px; 
+  padding: 5px 7px; 
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+#saveProfileImage:hover, #customButton:hover, #save-changes:hover, #edit-profileinfo:hover {
   background-color: #007bff;
   color: white;
   transform: scale(1.05);
 }
+
 
 #profile-form input:focus {
   border-color: #53C0FB;
