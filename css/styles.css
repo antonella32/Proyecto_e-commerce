@@ -739,18 +739,25 @@ label {
 }
 
 #profileinfo {
-  background-color: #cce7ff; /* Fondo celeste */
+  background-color: #d7e5f3; /* Fondo celeste */
   border-radius: 8px; /* Bordes redondeados */
   padding: 20px; /* Espacio interno */
   max-width: 600px; /* Ancho máximo del contenedor */
   width: 100%; /* Asegura que ocupe el ancho completo */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
   margin-bottom: 20px; /* Espacio debajo del perfil */
+  margin-top: 20px; /* Espacio en la parte superior */
 }
 
 .profile-pic-container {
   text-align: center; /* Centra la imagen de perfil */
   margin-bottom: 15px; /* Espacio debajo de la imagen */
+}
+
+.profile-pic-container img {
+  width: 50%; /* Ajusta el ancho de la imagen al tamaño del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 10px; /* Bordes redondeados */
 }
 
 #profile-details {
@@ -778,41 +785,76 @@ label {
   padding: 5px; 
 }
 
+#edit-profileinfo {
+  background-color: #53C0FB; 
+  color: #343a40; 
+    border: none; 
+  border-radius: 4px; 
+  padding: 10px 15px; 
+  cursor: pointer;
+  transition: background-color 0.3s;  
+}
+
 /* Estilos para el formulario de edición de datos */
 #profile-form {
   display: none;
-  background-color: white;
-  border: 1px solid blue; /* Borde azul */
+  background-color: #cce5f3; 
+  border: 2px solid #53C0FB; 
   border-radius: 8px; 
   padding: 20px; 
   max-width: 600px;
-  margin: 0 auto;
+  margin: 20px auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 #profile-form label {
   font-weight: bold; 
   margin-bottom: 5px;
   display: block;
+  color: white;
 }
 
 #profile-form input {
-  width: 100%; /* Ancho completo de los campos de entrada */
+  width: 100%; 
   padding: 10px; 
-  border: 1px solid #ccc; /* Borde gris claro */
+  border: 1px solid #ccc; 
   border-radius: 4px; 
   margin-bottom: 15px; 
+  background-color: #ffffff;
+  color: #474b58; 
+  font-weight: bold;
+  transition: border-color 0.3s;
 }
 
 #save-changes {
-  background-color: #007bff; /* Color de fondo del botón */
-  color: white; /* Color del texto del botón */
-  border: none; 
+  background-color: #53C0FB; 
+  color: #343a40; 
+    border: none; 
   border-radius: 4px; 
   padding: 10px 15px; 
   cursor: pointer;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s, transform 0.2s; 
 }
 
 #save-changes:hover {
-  background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
+}
+
+#profile-form input:focus {
+  border-color: #53C0FB;
+  outline: none;
+  background-color: #cdebff;
+}
+
+#profile-form input:disabled {
+  background-color: #495057; 
+  opacity: 0.7; 
+}
+
+#profile-form input[type="checkbox"] {
+  width: auto; 
+  margin-right: 10px; 
 }
