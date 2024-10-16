@@ -13,6 +13,63 @@ nav a {
   text-decoration: none;
 }
 
+/* Para la entrega 5 cambiamos el diseño de la barra de navegación*/
+/* Modificaciones del navbar en el header*/
+
+.navbar {
+  background: linear-gradient(135deg, #343a40, #495057);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.nav-link {
+  color: #ffffff; 
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 5px;
+  position: relative; 
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #53C0FB !important; 
+  transform: translateY(-2px);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #53C0FB; 
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1); 
+}
+
+.nav-link.active {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid #53C0FB !important; 
+}
+
+.nav-item {
+  margin: 0 10px; 
+}
+
+/* Fin de modificaciones del navbar en el header*/
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -255,7 +312,7 @@ a.custom-card:hover {
 #tablaProd th {
   border-left: none;
   border-right: none;
-  color: rgb(255, 255, 255);
+ 
   margin: 0;
   padding: 0;
   font-size: 90%;
@@ -267,7 +324,7 @@ a.custom-card:hover {
 }
 
 #tablaProd td {
-  background-color: hwb(0 91% 9%);
+  
   font-size: 100%;
   border-bottom: 1.5px solid #757272;
   border-top: 1.5px solid #757272;
@@ -275,7 +332,7 @@ a.custom-card:hover {
 
 
 #tablaProd td:nth-child(5) {
-  background-color:  #E9F1FA;
+  
   text-align: center;
   border-right:1.5px solid #757272; 
 }
@@ -288,7 +345,7 @@ a.custom-card:hover {
 #tablaProd td:nth-child(4) {
   text-align: center;
   font-weight: bold;
-  background-color:  hwb(0 100% 0%);
+  
 font-size: larger;  
   
 }
@@ -307,14 +364,14 @@ font-size: larger;
 }
 
 #tablaProd td:nth-child(3) {
-  background-color:#ffffff;
+ 
   font-size: larger;
   text-align: left;
 }
 
 #tablaProd td:nth-child(2) {
   text-align: center;
-  background-color:  #E9F1FA;
+
   font-size: 2.5vw;
   font-weight: bold;
   text-shadow: 0px 2px 2px #3e4547; 
@@ -331,7 +388,7 @@ font-size: larger;
 
 #tablaProd td:nth-child(1)  {
   text-align: center;
-  background-color:  #E9F1FA;
+ 
   border-left:1.5px solid #757272; 
 }
 
@@ -452,23 +509,22 @@ font-size: larger;
 
 /* estilos de la tabla con la info de los productos */
 #tinfoprod {
-  color: #000000;
-  margin: 0 auto;
+  
+  margin: auto;
   text-align: center;
   vertical-align: middle;
   border-collapse: separate;
   border-spacing: 0 15px;
   font-size: 1.5vw;
   width: 100%;
-  background-color: #E9F1FA;
+  
 }
 
 
 #tinfoprod .headerSoldCount {
-  color: #ABB4BD;
+ 
   font-weight: bold;
-  text-shadow: 1px 1px 0px hwb(0 48% 52%);
-  background-color: #E9F1FA;
+  
 }
 
 
@@ -483,16 +539,13 @@ font-size: larger;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-#tinfoprod .header-description
-/* Rectangulo de la descripcion del producto*/
-{
-  background-color: #ffffff !important;
-  border-radius: 20px; 
-  color: rgb(0, 0, 0);
-  padding: 30px 50px; 
-  text-align: center; 
-  display: inline-block; 
+#tinfoprod .header-description {
+  border-radius: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  display: inline-block;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgb(0, 0, 0); /* Borde negro por defecto */
 }
 
 #productImagesContainer 
@@ -505,25 +558,9 @@ font-size: larger;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-.headerSoldCount 
-/* subtitulos*/{
-  background-color: #E9F1FA;
-}
 
-.texto-der 
-/* cantidad de vendidos*/
-{
-  color: #1E375A ;
-  padding-right: 10px;
-  
-}
 
-.texto-izq
-/* Categoria*/
-{
-  padding-left: 10px;
-  color: #3e4547;
-}
+
 /* --------------------------------------------------------------------------------------------------------------------*/
 /* ENTREGA 4*/
 .related-product-cell {
@@ -547,10 +584,7 @@ font-size: larger;
   transform: scale(1.05); /* zoom al pasar el mouse*/
   cursor: pointer; 
 }
-#ratings-section
-{
-  background-color:#E9F1FA
-}
+
 .calification-item {
   padding: 10px;
   border: 1px solid #ddd;
@@ -584,7 +618,6 @@ font-size: larger;
   max-width: 600px; 
   margin: 20px auto; /* Centra el formulario horizontalmente */
   padding: 20px; 
-  background-color: #f8f9fa; /* Color de fondo claro */
   border: 1px solid #ced4da; /* Borde gris claro */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
@@ -643,4 +676,75 @@ label {
 .titulodeseccion
 {
  text-align: center;
+}
+/* ENTREGA 5 MENU DROPDOWN */
+
+.dropdown
+{
+  margin-right: 50px;
+}
+
+.dropdown-toggle::after {
+  display: none; 
+}
+
+.dropdown-menu {
+  background-color: #343a40; 
+  border: 1px solid #53C0FB; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transform: translateX(-40px) !important;
+}
+
+.dropdown-item {
+  color: #ffffff; 
+  padding: 10px 20px;
+  transition: background-color 0.3s ease; 
+}
+
+.dropdown-item:hover {
+  background-color: #53C0FB; 
+  color: #343a40; 
+}
+
+.form-check-input {
+  width: 40px;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.form-check-input:checked {
+  background-color: #007bff; /* Cambiar color cuando está activo */
+}
+
+
+/* Estilos específicos para el Modo Noche */
+body.dark-mode {
+  background-color: #181818;
+  color: white;
+}
+
+body.dark-mode .navbar {
+  background: linear-gradient(135deg, #212529, #343a40);
+}
+
+body.dark-mode .jumbotron {
+  background-color: #1a1a1a;
+  background-image: none; /* O puedes mantener la imagen pero oscurecerla */
+  color: white;
+}
+
+body.dark-mode #tablaProd td, 
+body.dark-mode #tablaProd th {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+/* Botón con estilo de Bootstrap */
+body.dark-mode .btn {
+  background-color: #343a40;
+  color: white;
+}
+
+body.dark-mode #tinfoprod .header-description {
+  border: 1px solid white; /* Borde blanco en Modo Noche */
 }

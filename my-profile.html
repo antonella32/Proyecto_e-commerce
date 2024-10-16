@@ -46,19 +46,94 @@
           </li>
           <li class="nav-item">
           </li>
-          <li class="nav-item">
-            <span id="user" class="nav-link"></span>
-          </li>
+                <!-- Entrega 5 inicio MENU DESPLEGABLE-->
+                <div class="dropdown">
+                  <li class="nav-item dropdown">
+                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                      <span id="user-navbar" class="nav-link"></span> 
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/cart.html">Mi carrito</a></li>
+                      <li><a class="dropdown-item" href="/my-profile.html">Mi perfil</a></li>
+                      <li><a class="dropdown-item" href="/login.html">Cerrar Sesión</a></li>
+                    </ul>
+                  </li>
+            </div>
+             <!-- Entrega 5 fin-->
         </ul>
       </div>
     </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="modeSwitch">
+      <label class="form-check-label" for="modeSwitch">Modo Noche</label>
+    </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <!-- ENTREGA 5!!!!!! -->
+    <div class="container" id="profile-section">
+      <!-- Div de información del perfil -->
+      <div id="profileinfo">
+        <div class="profile-pic-container">
+          <img src="img/car1.jpg" alt="Foto de perfil" id="profile-pic" width="150">
+        </div>
+        <!--Div para subir archivo-->
+        <div class="custom-file">
+          <button id="customButton">Seleccionar archivo</button>
+          <input type="file" id="profileImageInput" style="display:none;">
+          <button id="saveProfileImage">Guardar Imagen</button>
+      </div>
+      
+        <div class="container" id="profile-details">
+          <div class="fila-profile">
+            <strong>Nombre:</strong>
+            <span id="display-name"></span>
+          </div>
+          <div class="fila-profile">
+            <strong>Segundo Nombre:</strong>
+            <span id="display-second-name"></span>
+          </div>
+          <div class="fila-profile">
+            <strong>Apellido:</strong>
+            <span id="display-last-name"></span>
+          </div>
+          <div class="fila-profile">
+            <strong>Segundo Apellido:</strong>
+            <span id="display-second-last-name"></span>
+          </div>
+          <div class="fila-profile">
+            <strong>Email:</strong>
+            <span id="display-email"></span>
+          </div>
+          <div class="fila-profile">
+            <strong>Teléfono:</strong>
+            <span id="display-phone"></span>
+          </div>
+          <div>
+            <button id="edit-profileinfo">Editar informacion</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Div del formulario para modificar los datos -->
+      <div id="profile-form" style="display: none;">
+        <form action="">
+          <label for="name">Nombre</label>
+          <input type="text" name="nombre" id="name" placeholder="Nombre" required>
+          <label for="name">Segundo Nombre</label>
+          <input type="text" name="segundo nombre" id="secondname" placeholder="Segundo Nombre">
+          <label for="last-name">Apellido</label>
+          <input type="text" name="apellido" id="last-name" required placeholder="Apellido">
+          <label for="secondlast-name">Segundo Apellido</label>
+          <input type="text" name="segundo apellido" id="secondlast-name" placeholder="Segundo Apellido">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" value="">
+          <label for="phone">Teléfono</label>
+          <input type="tel" name="phone" id="phone" placeholder="Teléfono">
+          <button type="submit" id="save-changes">Guardar Cambios</button>
+        </form>
       </div>
     </div>
+    
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -71,6 +146,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>
