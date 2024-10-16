@@ -84,3 +84,40 @@ document.addEventListener('DOMContentLoaded', function () {
         form.style.display = 'block'; // Muestra el formulario
     });
 });
+
+
+//Cambiar la foto de perfil, almacenándola en el localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const profileImageInput = document.getElementById('profileImageInput');
+    const profilePicture = document.getElementById('profile-pic');
+    const saveProfileImage = document.getElementById('saveProfileImage');
+    const defaultImageSrc = "img/car1.jpg"; // Ruta a la imagen predeterminada
+
+    // Cargar la imagen desde localStorage o usar la predeterminada
+    const savedProfileImage = localStorage.getItem('profileImage');
+    profilePicture.src = savedProfileImage ? savedProfileImage : defaultImageSrc;
+
+    // Escuchar el cambio en el input de archivo
+    profileImageInput.addEventListener('change', () => {
+        const file = profileImageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                profilePicture.src = e.target.result; // Mostrar la imagen seleccionada
+            };
+            reader.readAsDataURL(file); // Leer el archivo como una URL de datos
+        }
+    });
+
+    // Guardar la imagen en localStorage
+    saveProfileImage.addEventListener('click', () => {
+        const currentSrc = profilePicture.src;
+        localStorage.setItem('profileImage', currentSrc);
+        alert('¡Imagen de perfil guardada!');
+    });
+
+    // Abrir el selector de archivos al hacer clic en el botón personalizado
+    document.getElementById('customButton').addEventListener('click', function() {
+        profileImageInput.click();
+    });
+});
