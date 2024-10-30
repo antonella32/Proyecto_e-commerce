@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())  //pasa a formato json
             .then(product => {
                 showProductInfoTable(product);
-                Originalproduct = product // igualamos parsa usar las propuedades de product
+
                 showRelatedProducts(product.relatedProducts);
             })
         
@@ -23,14 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(comments => {
             originalList = comments; //se inicializa una lista para rellenar con los comentarios que vienen del json
             showProductsCalifications(originalList) //muestra la lista original
-        }) 
+        })  
     } 
+}); 
     
 // Inicializar el carrito en localStorage si está vacío
 if (!localStorage.getItem("carrito")) {
     localStorage.setItem("carrito", JSON.stringify([]));
 }
-})
+
 
 
 //AQUI COMIENZA LA ENTREGA 6!!!!!!!!!!!!!!
