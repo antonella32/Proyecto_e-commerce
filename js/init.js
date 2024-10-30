@@ -6,6 +6,18 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let listaCarrito = JSON.parse(localStorage.getItem("carrito")) || [] ; //la usamos como variable global
+
+// Función para actualizar la burbuja de cantidad en el botón del carrito
+function actualizarContadorCarrito() {
+  const totalItems = listaCarrito.reduce((total, producto) => total + producto.cantidad, 0);
+  const cartCount = document.getElementById("cart_count");
+  if (cartCount) {
+      cartCount.textContent = totalItems;
+  }
+}
+
+
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
