@@ -1,5 +1,4 @@
 // Obtener el carrito desde localStorage
-let listaCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let cartItemsContainer = document.getElementById("cart-items");
 
 // Limpiar el contenedor en caso de que ya tenga contenido
