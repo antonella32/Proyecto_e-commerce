@@ -911,3 +911,66 @@ body.dark-mode #profile-form input {
   width: auto; 
   margin-right: 10px; 
 }
+/* ENTREGA 6, ESTILOS PARA EL CARRITO */
+#titulo-carrito 
+{
+  background-color: #00ABE4;
+  color: white;
+  text-align: center;
+
+}
+
+#cart-container
+{
+  width: 80%;
+  align-items: center;
+}
+
+/* Estilos para el contenedor de cada elemento del carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Imagen alineada a la izquierda */
+.incart_image img {
+  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto;
+  margin-right: 20px;
+}
+
+/* Contenedor para el nombre y el costo */
+.incart_name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilo para el texto de costo y moneda */
+.incart_cost {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Contenedor principal para la cantidad y el subtotal */
+.incart_soldcount {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Ajuste para la cantidad */
+.incart_soldcount input {
+  width: 60px;
+  text-align: center;
+}
+
+/* Estilo para el subtotal */
+.incart_subtotal {
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+}
