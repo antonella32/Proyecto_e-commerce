@@ -940,6 +940,7 @@ body.dark-mode #profile-form input {
   width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
   height: auto;
   margin-right: 20px;
+  border-radius: 20px;
 }
 
 /* Contenedor para el nombre y el costo */
@@ -966,6 +967,7 @@ body.dark-mode #profile-form input {
 .incart_soldcount input {
   width: 60px;
   text-align: center;
+  background-color: #E9F1FA;
 }
 
 /* Estilo para el subtotal */
@@ -973,4 +975,19 @@ body.dark-mode #profile-form input {
   font-weight: bold;
   margin-top: 5px;
   color: #333;
+  background-color: #E9F1FA;
+}
+
+.button-container {
+  display: flex; /* Usar flexbox para alinear elementos */
+  justify-content: flex-end; /* Alinear contenido a la derecha */
+  align-items: center; /* Centrar verticalmente los elementos */
+  margin-top: 20px; /* Espaciado superior */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.total {
+  margin-left: 10px; /* Espaciado entre el botón y el total */
+  font-size: 18px;
+  font-weight: bold;
 }
