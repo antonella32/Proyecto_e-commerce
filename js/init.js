@@ -76,5 +76,7 @@ window.addEventListener("load", function () {
     document.getElementById("modeSwitch").checked = true;  // Activar el switch
     document.querySelector("label[for='modeSwitch']").textContent = "Modo Día";
   }
+  actualizarContadorCarrito()//Actualizar contador carrito
+
 });
 
