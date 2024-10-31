@@ -3,6 +3,29 @@ let cartItemsContainer = document.getElementById("cart-items");
 // Limpiar el contenedor en caso de que ya tenga contenido
 cartItemsContainer.innerHTML = "";
 
+// Crear un elemento para mostrar el total
+const totalElement = document.createElement("span");
+totalElement.className = "total"; // Puedes agregar una clase para estilizar
+cartItemsContainer.appendChild(totalElement);
+
+// Función para calcular y mostrar el total
+function actualizarTotal() {
+    let total = 0;
+    listaCarrito.forEach(producto => {
+        total += producto.precio * producto.cantidad; // Sumar subtotales
+    });
+    totalElement.innerText = `Total: ${total} ${listaCarrito[0]?.moneda || ''}`; // Mostrar total
+}
+
+// Función para mostrar el subtotal del producto
+function mostrarSubtotal(producto) {
+    let subtotalElement = document.querySelector(`.incart_subtotal[data-nombre="${producto.nombre}"]`);
+    if (subtotalElement) {
+        let subtotal = producto.precio * producto.cantidad;
+        subtotalElement.innerText = `${subtotal} ${producto.moneda}`; // Muestra solo el subtotal
+    }
+}
+
 // Función para actualizar la cantidad en el carrito
 function actualizarCantidad(nombreProducto, nuevaCantidad) {
     nuevaCantidad = parseInt(nuevaCantidad); // Asegúrate de que sea un número entero
@@ -15,29 +38,6 @@ function actualizarCantidad(nombreProducto, nuevaCantidad) {
         actualizarTotal(); // Actualiza el total
     }
 }
-
-// Función para mostrar el subtotal del producto
-function mostrarSubtotal(producto) {
-    let subtotalElement = document.querySelector(`.incart_subtotal[data-nombre="${producto.nombre}"]`);
-    if (subtotalElement) {
-        let subtotal = producto.precio * producto.cantidad;
-        subtotalElement.innerText = `${subtotal} ${producto.moneda}`; // Muestra solo el subtotal
-    }
-}
-
-// Función para calcular y mostrar el total
-function actualizarTotal() {
-    let total = 0;
-    listaCarrito.forEach(producto => {
-        total += producto.precio * producto.cantidad; // Sumar subtotales
-    });
-    totalElement.innerText = `Total: ${total} ${listaCarrito[0]?.moneda || ''}`; // Mostrar total
-}
-
-// Crear un elemento para mostrar el total
-const totalElement = document.createElement("span");
-totalElement.className = "total"; // Puedes agregar una clase para estilizar
-cartItemsContainer.appendChild(totalElement);
 
 // Iterar sobre los productos en el carrito y crear los elementos de la lista
 listaCarrito.forEach(Originalproduct => {
@@ -56,7 +56,7 @@ listaCarrito.forEach(Originalproduct => {
                 Cantidad: 
                 <input type="number" value="${Originalproduct.cantidad}" min="1" 
                 onchange="actualizarCantidad('${Originalproduct.nombre}', this.value)">
-                <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal">${subtotal} ${Originalproduct.moneda}</span></div>
+                <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal" data-nombre="${Originalproduct.nombre}">${subtotal} ${Originalproduct.moneda}</span></div>
             </div>
         </div>
     `;
