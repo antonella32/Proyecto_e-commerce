@@ -22,9 +22,31 @@ nav a {
   font-size: 1.1rem; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  display: flex;
+  gap: 5rem;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(45deg, #090b88, #6291e9);
+  -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 .navbar:hover {
+  
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
 
@@ -34,6 +56,7 @@ nav a {
   padding: 10px 20px;
   border-radius: 5px;
   position: relative; 
+  transform: translateY(10%);
 }
 
 .nav-link:hover {
@@ -910,4 +933,212 @@ body.dark-mode #profile-form input {
 #profile-form input[type="checkbox"] {
   width: auto; 
   margin-right: 10px; 
+}
+/* ENTREGA 6, ESTILOS PARA EL CARRITO */
+#titulo-carrito 
+{
+  background-color: #00ABE4;
+  color: white;
+  text-align: center;
+
+}
+
+#cart-container
+{
+  width: 80%;
+  align-items: center;
+}
+
+/* Estilos para el contenedor de cada elemento del carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Imagen alineada a la izquierda */
+.incart_image img {
+  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+/* Contenedor para el nombre y el costo */
+.incart_name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilo para el texto de costo y moneda */
+.incart_cost {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Contenedor principal para la cantidad y el subtotal */
+.incart_soldcount {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Ajuste para la cantidad */
+.incart_soldcount input {
+  width: 60px;
+  text-align: center;
+  background-color: #E9F1FA;
+}
+
+/* Estilo para el subtotal */
+.incart_subtotal {
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+  background-color: #E9F1FA;
+}
+
+.button-container {
+  display: flex; /* Usar flexbox para alinear elementos */
+  justify-content: flex-end; /* Alinear contenido a la derecha */
+  align-items: center; /* Centrar verticalmente los elementos */
+  margin-top: 20px; /* Espaciado superior */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.total {
+  margin-left: 10px; /* Espaciado entre el botón y el total */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Estilos para el carrito */
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.material-symbols-outlined {
+  font-size: 28px;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: #2c3e50;
+  padding: 12px;
+  border-radius: 16px;
+  background: #f0f0f0;
+  box-shadow: 5px 5px 10px #d1d1d1,
+              -5px -5px 10px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  box-shadow: inset 5px 5px 10px #d1d1d1,
+              inset -5px -5px 10px #ffffff;
+  color: #3498db;
+}
+
+.div col-md-4 {
+  background-color: #0056b3;
+}
+
+/* Estilos para las categorías en la pantalla de inicio*/
+
+.card-body {
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-body:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow:
+      0 6px 8px rgba(0, 0, 0, 0.05),
+      0 15px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body h3 {
+  font-size: 1.5rem;
+  color: #1a202c;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.card-body h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 50px;
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  border-radius: 2px;
+  background-color: #91c2f7;
+}
+
+.m-3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.m-3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.bd-placeholder-img {
+  border-radius: 20px;
+}
+
+/* Estilos del botón para agregar un producto al carrito */
+
+#add_to_cart {
+  background-color: #53C0FB;
+  color: #343a40;
+    border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-right: 50px;
+}
+
+/*Estilos para el botón de comprar */
+
+#go_to_cart {
+  background-color: #53C0FB;
+  color: #343a40;
+    border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Botones de comprar y agregar al carrito (hover) */
+
+#add_to_cart:hover, #go_to_cart:hover {
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
 }

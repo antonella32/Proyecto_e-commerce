@@ -2,133 +2,185 @@
 <html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>eMercado - Todo lo que busques está aquí</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart_checkout" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-between">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="categories.html">Categorías</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sell.html">Vender</a>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                          <!-- Entrega 5 inicio MENU DESPLEGABLE-->
-          <div class="dropdown">
-            <li class="nav-item dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 
-                <span id="user-navbar" class="nav-link"></span> 
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/cart.html">Mi carrito</a></li>
-                <li><a class="dropdown-item" href="/my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="/login.html">Cerrar Sesión</a></li>
-              </ul>
-            </li>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+               <!-- Entrega 5 inicio MENU DESPLEGABLE-->
+               <div class="dropdown">
+                <li class="nav-item dropdown">
+                  <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                    <span id="user-navbar" class="nav-link"></span> 
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/cart.html">Mi carrito</a></li>
+                    <li><a class="dropdown-item" href="/my-profile.html">Mi perfil</a></li>
+                    <li><a class="dropdown-item" href="/login.html">Cerrar Sesión</a></li>
+                  </ul>
+                </li>
+          </div>
+           <!-- Entrega 5 fin DEL DROPDOWN -->
+        </ul>
       </div>
-       <!-- Entrega 5 fin-->
-                </ul>
-            </div>
+    </div>
+       <!-- ACA VA LO DEL CARRITO!!!-->
+  <div>
+    <button type="button" class="btn btn-primary position-relative">
+      <span class="material-symbols-outlined">shopping_cart_checkout</span>
+      <span id="cart_count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        0
+        <span class="visually-hidden">cart-items</span>
+      </span>
+    </button> 
+  </div>
+    <!-- ENTREGA 5 PARTE 4 MODO DIA MODO NOCHE-->
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="modeSwitch">
+      <label class="form-check-label" for="modeSwitch">Modo Noche</label>
+    </div>
+  </nav>
+  <main>
+   <!-- aca va la tabla para la informacion de los productos-->
+   <div class="container">
+    <div id="product-info">
+      <table id="tinfoprod">  
+        <thead>
+          <tr>
+            <th><span class="header-name">Nombre</span></th>  
+          </tr>
+        </thead>
+        <tbody id="tinfo">
+          <tr id="filadecarousel">
+            <td class="header-image"></td>   
+            <td>
+              <div id="productImagesContainer">
+                <button class="carousel-button prev">❮</button>   <!-- Botones para recorrer las fotos-->
+                <div id="productImages" class="carousel"></div>
+                <button class="carousel-button next">❯</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="header-description">Descripción</span></td>
+          </tr>
+            <!--BOTON DE AGREGAR AL CARRITO Y DE COMPRAR !!!! -->
+            <tr>
+              <td><button id="add_to_cart" type="button" >Agregar al carrito</button><button id="go_to_cart" type="button" >Comprar</button></td>
+            </tr>
+          <tr class="headerSoldCount"> <!--subtitulos de la tabla para mostrar categoria y soldCount-->
+            <td>
+              <div class="flex-container">
+                <span class="texto-izq">Categoria</span>
+                <span class="texto-der">Cantidad de vendidos</span>
+              </div>
+            </td>
+          </tr>
+          <tr class="header-category"><!--Aca se rellenan los datos-->
+            <td>
+              <div class="flex-container">
+                <span class="texto-izq">Categoria</span>
+                <span class="texto-der">Cantidad de vendidos</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+        <!-- ENTREGA 4 -->
+
+
+        <!-- Sección de Calificaciones -->
+        <div id="ratings-section">
+          <h3 class="titulodeseccion">Calificaciones</h3>
+          <div id="ratings-list">
+            <!-- Aquí se agregarán las calificaciones desde JavaScript -->
+          </div>
+           <h3 class="titulodeseccion">Envia tu calificacion</h3>
+<form id="rating-form">
+  <div class="form-group">
+      <label id="username" for="username"></label>
+  </div>
+  <div class="form-group">
+      <label for="comment">Comentario:</label>
+      <textarea id="comment" class="form-control" rows="3" required></textarea>
+  </div>
+  <div class="form-group">
+      <label for="rating">Calificación:</label>
+      <select id="rating" class="form-control" required>
+          <option value="" disabled selected>Selecciona una calificación</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+      </select>
+  </div>
+  <button type="button" id="enviar" class="botondelform">Enviar</button>
+</form>
+  
+        <!-- Sección de Productos Relacionados -->
+        <div id="related-products-section">
+          <h3 class="titulodeseccion">Productos Relacionados</h3>
+          <div class="row">
+            <table id="related-products-table">
+              <tbody>
+                  <!-- aca va el html que se genera desde el js-->
+              </tbody>
+          </table>
+          </div>
         </div>
-    </nav>
-    <main class="pb-5 container">
-        <div class="container">
-            <!-- Botones para filtrar por precio asc y desc basado en el categories.html -->
-            <div class="row">
-                <div class="col text-end">
-                    <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-                        <!--Aca va el buscador del desafiate-->
-                        <div class="input-container">
-                             <i class="fa fa-search"></i>
-                             <input class="form-control" type="search" id="buscador" placeholder="Encuentre...">
-                          </div>
-                         
-                        <input type="radio" class="btn-check" name="options" id="sortAsc">
-                        <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>Precio Asc.</label>
 
-                        <input type="radio" class="btn-check" name="options" id="sortDesc">
-                        <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>Precio Desc.</label>
+    </div>
 
-                        <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-                        <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i>Rel.</label>
-                    </div>
-                </div>
-            </div>
-            <!-- Para filtrar por precio minimo y maximo tambien basado en el categories.html -->
-            <div class="row">
-                <div class="col-lg-6 col-md-12 mb-1 container">
-                    <div class="row container p-0 m-0">
-                        <div class="col">
-                            <p class="font-weight-normal text-end my-2">Precio</p>
-                        </div>
-                        <div class="col">
-                            <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
-                        </div>
-                        <div class="col">
-                            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
-                        </div>
-                        <div class="col-3 p-0">
-                            <div class="btn-group" role="group">
-                                <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-                                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Tabla donde se muestran los productos-->
-            <div class="row">
-                <div class="list-group" id="product-list-container">
-                </div>
-            </div>
-                        <!-- En la tabla cambiamos lo que decia autos por products para hacerlo de forma general para todas las categorias -->
-
-            <div id="products">
-                <table id="tablaProd">
-                    <thead>
-                        <tr>
-                            <th class="header-image">Imagen</th>
-                            <th class="header-name">Nombre</th>
-                            <th class="header-description">Descripción</th>
-                            <th class="header-price">Precio</th>
-                            <th class="header-sold">Cantidad de Vendidos</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tproducts">
-                    </tbody>
-                </table>
-                <script src="js/init.js"></script>
-                <script src="js/products.js"></script>
-                <script src="js/login.js"></script>
-            </div>
-        </div>
-    </main>
-    <footer class="text-muted">
-        <div class="container">
-            <p class="float-end">
-                <a href="#">Volver arriba</a>
-            </p>
-            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-        
-            <div id="spinner-wrapper" style="display:none;">Cargando...</div>
+  </div>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/login.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+  
+  
 </body>
+
 </html>
