@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" ><!-- AGREGADO PARA LOS ICONOS-->
 </head>
 
 <body>
@@ -45,22 +46,25 @@
           </div>
            <!-- Entrega 5 fin DEL DROPDOWN -->
         </ul>
+        <!-- ACA VA LO DEL CARRITO!!!-->
+        <div class="d-flex align-items-center"> <!-- Contenedor para el carrito-->
+          <button id="cartButton" type="button" class="btn btn-primary position-relative me-4">
+              <i class="bi bi-cart"></i> <!-- Icono de carrito -->
+              <span id="cart_count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  0
+                  <span class="visually-hidden">cart-items</span>
+              </span>
+          </button>
+        </div>
+        <div>
+          <!-- Modo Día/Noche -->
+          <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="modeSwitch">
+              <label class="form-check-label" for="modeSwitch">Modo Noche</label>
+          </div>
+        </div>
+        
       </div>
-    </div>
-       <!-- ACA VA LO DEL CARRITO!!!-->
-  <div>
-    <button type="button" class="btn btn-primary position-relative">
-      Mi Carrito
-      <span id="cart_count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        0
-        <span class="visually-hidden">cart-items</span>
-      </span>
-    </button> 
-  </div>
-    <!-- ENTREGA 5 PARTE 4 MODO DIA MODO NOCHE-->
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="modeSwitch">
-      <label class="form-check-label" for="modeSwitch">Modo Noche</label>
     </div>
   </nav>
   <main>
@@ -89,7 +93,7 @@
           </tr>
             <!--BOTON DE AGREGAR AL CARRITO Y DE COMPRAR !!!! -->
             <tr>
-              <td><button id="add_to_cart" type="button" >Agregar al carrito</button><button id="go_to_cart" type="button" >Comprar</button></td>
+              <td><button id="add_to_cart" type="button" class="btn btn-primary position-relative me-4" >Agregar al carrito</button><button id="go_to_cart" type="button" class="btn btn-primary position-relative">Comprar</button></td>
             </tr>
           <tr class="headerSoldCount"> <!--subtitulos de la tabla para mostrar categoria y soldCount-->
             <td>
@@ -120,7 +124,7 @@
           <div id="ratings-list">
             <!-- Aquí se agregarán las calificaciones desde JavaScript -->
           </div>
-           <h3 class="titulodeseccion">Envia tu calificacion</h3>
+           <h3 class="titulodeseccion">Envía tu calificación</h3>
 <form id="rating-form">
   <div class="form-group">
       <label id="username" for="username"></label>

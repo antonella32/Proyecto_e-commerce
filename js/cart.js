@@ -26,6 +26,11 @@ function mostrarSubtotal(producto) {
     }
 }
 
+//............
+//Se tiene el total y el subtotal en tiempo real
+//subtotal para cada producto y el total que suma todos los subtotales
+//..........
+
 // Función para actualizar la cantidad en el carrito
 function actualizarCantidad(nombreProducto, nuevaCantidad) {
     nuevaCantidad = parseInt(nuevaCantidad); // Asegúrate de que sea un número entero
@@ -42,7 +47,7 @@ function actualizarCantidad(nombreProducto, nuevaCantidad) {
 // Iterar sobre los productos en el carrito y crear los elementos de la lista
 listaCarrito.forEach(Originalproduct => {
     let subtotal = Originalproduct.precio * Originalproduct.cantidad; // Calcular subtotal
-
+    //SE CREAN EN EL HTML LOS DIVS PARA CARGAR LOS PRODUCTOS AGREGADOS AL CARRITO
     let item = `
        <div class="cart-item">
             <div class="incart_image">
@@ -60,8 +65,10 @@ listaCarrito.forEach(Originalproduct => {
             </div>
         </div>
     `;
-    cartItemsContainer.innerHTML += item; // Agregar el elemento al contenedor
+    cartItemsContainer.innerHTML += item; // AQUI SE AGREFAN AL DIV DE CLASE CART ITEM
 });
+
+//.....................//
 
 // Calcular el total inicialmente
 actualizarTotal();
@@ -69,18 +76,17 @@ actualizarTotal();
 // Agregar botón de compra
 const botonComprar = document.createElement("button");
 botonComprar.innerText = "Comprar";
-botonComprar.className = "btn btn-primary position-relative"; // Puedes agregar una clase para estilizar el botón
+botonComprar.className = "btn btn-primary position-relative"; 
 botonComprar.onclick = function() {
-    // Aquí puedes manejar la lógica de compra
-    alert("Gracias por tu compra!");
-    // Puedes agregar más lógica aquí, como redirigir a otra página o limpiar el carrito
+    
+    alert("Gracias por tu compra!"); // alerta para cuando se clickea el boton comprar
 };
 
-// Crear un contenedor para el botón y el total
+// se crea un div para el boton y el total
 const buttonContainer = document.createElement("div");
-buttonContainer.className = "button-container"; // Clase para estilizar el contenedor de botón y total
+buttonContainer.className = "button-container"; //clase para estilo
 
 // Agregar el botón y el span del total al contenedor
 buttonContainer.appendChild(botonComprar);
-buttonContainer.appendChild(totalElement); // Agregar el span del total al contenedor
-cartItemsContainer.appendChild(buttonContainer); // Agregar el contenedor al carrito
+buttonContainer.appendChild(totalElement); // Agrega el span del total al contenedor
+cartItemsContainer.appendChild(buttonContainer); // Agrega el contenedor al carrito

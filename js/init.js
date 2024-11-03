@@ -80,3 +80,9 @@ window.addEventListener("load", function () {
 
 });
 
+//Boton carrito del nav bar redirige a cart.html
+//en la pagina cart.html aparece 1 error en consola porque
+// no esta el boton con el id cartButton como en el resto de las pag
+document.getElementById("cartButton").addEventListener("click", function() {
+  window.location.href = "cart.html";
+});

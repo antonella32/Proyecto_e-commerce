@@ -926,7 +926,7 @@ body.dark-mode #profile-form input {
   align-items: center;
 }
 
-/* Estilos para el contenedor de cada elemento del carrito */
+/* Estilos para cada producto en el carrito comienza */
 .cart-item {
   display: flex;
   align-items: center;
@@ -935,59 +935,55 @@ body.dark-mode #profile-form input {
   border-bottom: 1px solid #ddd;
 }
 
-/* Imagen alineada a la izquierda */
+/* Imagen*/
 .incart_image img {
-  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  width: 100px; 
   height: auto;
   margin-right: 20px;
   border-radius: 20px;
 }
 
-/* Contenedor para el nombre y el costo */
+
 .incart_name {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-/* Estilo para el texto de costo y moneda */
 .incart_cost {
   font-size: 0.9em;
-  color: #666;
   margin-bottom: 10px;
 }
 
-/* Contenedor principal para la cantidad y el subtotal */
 .incart_soldcount {
   margin-left: auto;
   text-align: right;
 }
 
-/* Ajuste para la cantidad */
 .incart_soldcount input {
   width: 60px;
   text-align: center;
   background-color: #E9F1FA;
 }
 
-/* Estilo para el subtotal */
 .incart_subtotal {
   font-weight: bold;
   margin-top: 5px;
   color: #333;
   background-color: #E9F1FA;
 }
+/* Estilos para cada producto en el carrito fin */
 
 .button-container {
-  display: flex; /* Usar flexbox para alinear elementos */
-  justify-content: flex-end; /* Alinear contenido a la derecha */
-  align-items: center; /* Centrar verticalmente los elementos */
-  margin-top: 20px; /* Espaciado superior */
-  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: center;
+  margin-top: 20px; 
+  width: 100%; 
 }
 
 .total {
-  margin-left: 10px; /* Espaciado entre el botón y el total */
+  margin-left: 10px; 
   font-size: 18px;
   font-weight: bold;
 }
