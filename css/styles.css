@@ -911,3 +911,79 @@ body.dark-mode #profile-form input {
   width: auto; 
   margin-right: 10px; 
 }
+/* ENTREGA 6, ESTILOS PARA EL CARRITO */
+#titulo-carrito 
+{
+  background-color: #00ABE4;
+  color: white;
+  text-align: center;
+
+}
+
+#cart-container
+{
+  width: 80%;
+  align-items: center;
+}
+
+/* Estilos para cada producto en el carrito comienza */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Imagen*/
+.incart_image img {
+  width: 100px; 
+  height: auto;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+
+.incart_name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.incart_cost {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.incart_soldcount {
+  margin-left: auto;
+  text-align: right;
+}
+
+.incart_soldcount input {
+  width: 60px;
+  text-align: center;
+  background-color: #E9F1FA;
+}
+
+.incart_subtotal {
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+  background-color: #E9F1FA;
+}
+/* Estilos para cada producto en el carrito fin */
+
+.button-container {
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: center;
+  margin-top: 20px; 
+  width: 100%; 
+}
+
+.total {
+  margin-left: 10px; 
+  font-size: 18px;
+  font-weight: bold;
+}
