@@ -33,18 +33,18 @@ function mostrarSubtotal(producto) {
 
 // Función para actualizar la cantidad en el carrito
 function actualizarCantidad(nombreProducto, nuevaCantidad) {
-    nuevaCantidad = parseInt(nuevaCantidad); // Asegúrate de que sea un número entero
+    nuevaCantidad = parseInt(nuevaCantidad);
     // Actualizar cantidad en el carrito
     let producto = listaCarrito.find(item => item.nombre === nombreProducto);
     if (producto) {
-        producto.cantidad = nuevaCantidad; // Actualiza la cantidad en el carrito
-        localStorage.setItem("carrito", JSON.stringify(listaCarrito)); // Guarda en localStorage
-        mostrarSubtotal(producto); // Actualiza el subtotal
-        actualizarTotal(); // Actualiza el total
+        producto.cantidad = nuevaCantidad; //importante, se actualiza la cantidad en el carrito 
+        localStorage.setItem("carrito", JSON.stringify(listaCarrito)); //se guarda en local storage
+        mostrarSubtotal(producto); //con esto se actualiza el subtotal
+        actualizarTotal(); // con esto se actualiza el total
     }
 }
 
-// Iterar sobre los productos en el carrito y crear los elementos de la lista
+//Crear los elementos de la lista para mostrar en la pantalla de cart.html
 listaCarrito.forEach(Originalproduct => {
     let subtotal = Originalproduct.precio * Originalproduct.cantidad; // Calcular subtotal
     //SE CREAN EN EL HTML LOS DIVS PARA CARGAR LOS PRODUCTOS AGREGADOS AL CARRITO
