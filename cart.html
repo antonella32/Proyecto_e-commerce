@@ -59,6 +59,62 @@
     <div class="container "id="cart-items" class="cart-items">
       <!-- Los productos del carrito se agregarán aquí dinámicamente -->
   </div>
+  
+  <!-- ENTREGA 7!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <form id= "form-check-out" action="">
+      <div class="form-group"> 
+      <label for="shipping-type">Tipo de envío</label>
+       <select class="form-control" id="shipping-type">
+         <option value="">Selecciona una opción</option>
+          <option value="Premium">Premium 2 a 5 días (15%)</option> 
+          <option value="Express">Express 5 a 8 días (7%)</option> 
+          <option value="Standard">Standard 12 a 15 días (5%)</option>
+         </select>
+         </div> 
+       
+      <div class="form-group">
+      <p>Dirección de envío</p>
+      <label for="Departamento">Departamento </label>  
+      <input type="text" id="Departamento-address" name="address" value="">
+        
+      <label for="Localidad">Localidad </label>
+      <input type="text" id="Localidad-address" name="address" value="">
+        
+      <label for="Calle">Calle </label>
+      <input type="text" id="Calle-address" name="address" value="">
+        
+      <label for="Numero">Número </label>
+      <input type="text" id="Numero-address" name="address" value="">
+        
+      <label for="Esquina">Esquina </label>
+      <input type="text" id="Esquina-address" name="address" value="">
+        
+      </div>
+      <div class="form-group"> 
+        <label for="payment-method">Forma de pago</label>
+         <select class="form-control" id="payment">
+           <option value="">Selecciona una opción</option>
+            <option value="Credit">Tarjeta de crédito</option> 
+            <option value="Transfer">Transferencia bancaria</option> 
+           </select>
+           </div>
+    
+    <div class="form-group">
+      <p>Costos</p>
+        <label for="">Subtotal:</label>
+        <input type="text" id="Subtotal" readonly>
+      
+        <label for="">Costo de envío: </label>
+        <input type="text" id="Costo-envio" readonly>
+        
+        <label for="">Total:</label>
+        <input type="text" id="Total" readonly>
+        
+      </div>
+      <div>
+       <button type="submit" id="Checkout">Finalizar compra</button>
+      </div>
+  </form>
 </div>
   </main>
   <footer class="text-muted">
