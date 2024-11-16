@@ -34,23 +34,47 @@ function actualizarCantidad(nombreProducto, nuevaCantidad) {
     }
 }
 
+//funcion que actualiza  la cantidad en el carrito
+function actualizarCantidad(nombreProducto, nuevaCantidad) {
+    nuevaCantidad = parseInt(nuevaCantidad);
+    let producto = listaCarrito.find(item => item.nombre === nombreProducto);
+
+    if (producto) {
+        // Si la cantidad es 0, eliminar el producto del carrito
+        if (nuevaCantidad === 0) {
+            // Eliminar producto del carrito
+            listaCarrito = listaCarrito.filter(item => item.nombre !== nombreProducto);
+
+            // Actualizar el carrito
+            actualizarCarrito();
+            localStorage.setItem("carrito", JSON.stringify(listaCarrito)); // Guardar en el localStorage
+        } else {
+            // Actualizar la cantidad y el subtotal
+            producto.cantidad = nuevaCantidad;
+            let subtotal = producto.precio * producto.cantidad;
+            let subtotalElement = document.querySelector(`.incart_subtotal[data-nombre="${producto.nombre}"]`);
+            subtotalElement.textContent = `${subtotal.toFixed(2)} ${producto.moneda}`;
+            localStorage.setItem("carrito", JSON.stringify(listaCarrito));
+            actualizarCostos();
+            actualizarTotal();
+        }
+    }
+}
+
 // Función para actualizar el carrito
 function actualizarCarrito() {
     // Limpiar el contenedor de los productos
     cartItemsContainer.innerHTML = "";
 
-    // Verificar si el carrito tiene productos
+    //verifica si el carrito tiene productos para ver si se muestra el mensaje 
     if (listaCarrito.length === 0) {
-        // Mostrar mensaje de carrito vacío y el botón de iniciar compra
         document.getElementById('empty-cart-message').style.display = 'block';
-        
-        // Ocultar el botón de finalizar compra si el carrito está vacío
+        // Si está vacío, no aparece el botón que muestra el modal
         document.getElementById('mostrarModal').style.display = 'none';
     } else {
-        // Ocultar el mensaje de carrito vacío
+        // Oculta el mensaje de carrito vacío
         document.getElementById('empty-cart-message').style.display = 'none';
-
-        // Mostrar el botón de finalizar compra
+        //se muestra el bot+on de finalizar compra que abre el modal
         document.getElementById('mostrarModal').style.display = 'block';
 
         // Mostrar productos en el carrito
@@ -67,7 +91,7 @@ function actualizarCarrito() {
                     </div>
                     <div class="incart_soldcount">
                         Cantidad: 
-                        <input type="number" value="${Originalproduct.cantidad}" min="1" 
+                        <input type="number" value="${Originalproduct.cantidad}" min="0" 
                         onchange="actualizarCantidad('${Originalproduct.nombre}', this.value)">
                         <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal" data-nombre="${Originalproduct.nombre}">${subtotal} ${Originalproduct.moneda}</span></div>
                     </div>
