@@ -237,7 +237,18 @@ function showRelatedProducts(relatedProducts) {
                     showProductInfoTable(product); // actualiza la tabla para el producto relacionado seleccionado
                     showRelatedProducts(product.relatedProducts); // muestra productos relacionados al seleccionado
                     window.scrollTo(0, 0); //una vez que se hace click sube para mostrar la info del seleccionado
-                })
+                
+                 // Fetch adicional para cargar los comentarios del producto relacionado
+        const commentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${relatedProductId}.json`;
+        fetch(commentsUrl)
+            .then(response => response.json())
+            .then(comments => {
+                originalList = comments; // Actualiza la lista global
+                showProductsCalifications(originalList); // Muestra los comentarios del producto relacionado
+            })
+            .catch(error => console.error("Error al cargar los comentarios:", error));
+    })
+
                 .catch(error => console.error("Error al cargar el producto:", error));
         });
     });
