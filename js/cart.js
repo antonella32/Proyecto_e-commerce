@@ -1,183 +1,163 @@
-const TIPO_CAMBIO = 40; // 1 USD = 40 UYU
-let cartItemsContainer = document.getElementById("cart-items");
+   const TIPO_CAMBIO = 40; //tipo de cambio para hacer la conversion de dolares y pesos 
+   let cartItemsContainer = document.getElementById("cart-items");
 
-// Limpiar el contenedor en caso de que ya tenga contenido
-cartItemsContainer.innerHTML = "";
+   //se limpia el contenedor x si tiene contenido
+   cartItemsContainer.innerHTML = "";
 
-// Crear un elemento para mostrar el total
-const totalElement = document.createElement("span");
-totalElement.className = "total"; // Puedes agregar una clase para estilizar
-cartItemsContainer.appendChild(totalElement);
+   //se crea un span para el total
+   const totalElement = document.createElement("span");
+   totalElement.className = "total";
+   cartItemsContainer.appendChild(totalElement);
 
-// Función para calcular y mostrar el total
-function actualizarTotal() {
-    actualizarCostos(); // Centraliza la lógica en actualizarCostos
-}
+   //funcion para mostrar y actualizar el total
+   function actualizarTotal() {
+       actualizarCostos();
+   }
+//moneda
+   const currencySelector = document.getElementById("currency-type");
+   currencySelector.addEventListener("change", actualizarTotal);
 
-const currencySelector = document.getElementById("currency-type");
-currencySelector.addEventListener("change", actualizarTotal);
+   // Función para actualizar la cantidad en el carrito
+   function actualizarCantidad(nombreProducto, nuevaCantidad) {
+       nuevaCantidad = parseInt(nuevaCantidad);
+       let producto = listaCarrito.find(item => item.nombre === nombreProducto);
 
+       if (producto) {
+           producto.cantidad = nuevaCantidad; // Actualizar la cantidad
+           let subtotal = producto.precio * producto.cantidad;
+           let subtotalElement = document.querySelector(`.incart_subtotal[data-nombre="${producto.nombre}"]`);
+           subtotalElement.textContent = `${subtotal.toFixed(2)} ${producto.moneda}`;
+           localStorage.setItem("carrito", JSON.stringify(listaCarrito));
+           actualizarCostos();
+           actualizarTotal();
+       }
+   }
 
-//............
-//Se tiene el total y el subtotal en tiempo real
-//subtotal para cada producto y el total que suma todos los subtotales
-//..........
+   listaCarrito.forEach(Originalproduct => {
+       let subtotal = Originalproduct.precio * Originalproduct.cantidad;
+       let item = `
+          <div class="cart-item">
+               <div class="incart_image">
+                   <img src="${Originalproduct.imagen}" alt="${Originalproduct.nombre}" />
+               </div>
+               <div class="incart_details">
+                   <h5 class="incart_name">${Originalproduct.nombre}</h5>
+                   <div class="incart_cost">Costo: ${Originalproduct.precio} ${Originalproduct.moneda}</div>
+               </div>
+               <div class="incart_soldcount">
+                   Cantidad: 
+                   <input type="number" value="${Originalproduct.cantidad}" min="1" 
+                   onchange="actualizarCantidad('${Originalproduct.nombre}', this.value)">
+                   <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal" data-nombre="${Originalproduct.nombre}">${subtotal} ${Originalproduct.moneda}</span></div>
+               </div>
+           </div>
+       `;
+       cartItemsContainer.innerHTML += item;
+   });
 
-// Función para actualizar la cantidad en el carrito
-function actualizarCantidad(nombreProducto, nuevaCantidad) {
-    nuevaCantidad = parseInt(nuevaCantidad);
+   let subtotalInput = document.getElementById("Subtotal");
+   let costoEnvioInput = document.getElementById("Costo-envio");
+   let totalInput = document.getElementById("Total");
+   let tipoEnvio = document.getElementById("shipping-type");
 
-    // Buscar el producto en la lista
-    let producto = listaCarrito.find(item => item.nombre === nombreProducto);
+   function calcularSubtotal() {
+       let subtotal = 0;
+       listaCarrito.forEach(producto => {
+           let subtotalProducto = producto.precio * producto.cantidad;
+           if (currencySelector.value === "USD" && producto.moneda === "UYU") {
+               subtotalProducto /= TIPO_CAMBIO;
+           } else if (currencySelector.value === "UYU" && producto.moneda === "USD") {
+               subtotalProducto *= TIPO_CAMBIO;
+           }
+           subtotal += subtotalProducto;
+       });
+       return subtotal;
+   }
+   //ENTREGA 7 FUNCION PARA LOS COSTOS DE ENVIO 
+   function calcularCostoEnvio(subtotal) {
+       let porcentajeEnvio = 0;
+       switch (tipoEnvio.value) {
+           case "Premium":
+               porcentajeEnvio = 0.15;
+               break;
+           case "Express":
+               porcentajeEnvio = 0.07;
+               break;
+           case "Standard":
+               porcentajeEnvio = 0.05;
+               break;
+           default:
+               porcentajeEnvio = 0;
+       }
+       return subtotal * porcentajeEnvio;
+   }
+   //Funcion que actualiza los costos de subtotal entre todos los productos y con el envio 
+   //Depende del tipo de moneda seleccionada 
 
-    if (producto) {
-        producto.cantidad = nuevaCantidad; // Actualizar la cantidad
+   function actualizarCostos() {
+       let subtotal = calcularSubtotal();
+       let costoEnvio = calcularCostoEnvio(subtotal);
+       const currencyType = document.getElementById("currency-type").value;
 
-        // Calcular el nuevo subtotal
-        let subtotal = producto.precio * producto.cantidad;
+       if (currencyType === "USD") {
+           costoEnvio /= TIPO_CAMBIO;
+       }
 
-        // Actualizar el subtotal en el DOM sin cambiar la moneda
-        let subtotalElement = document.querySelector(
-            `.incart_subtotal[data-nombre="${producto.nombre}"]`
-        );
-        subtotalElement.textContent = `${subtotal.toFixed(2)} ${producto.moneda}`;
+       let total = subtotal + costoEnvio;
+       subtotalInput.value = `${subtotal.toFixed(2)} ${currencyType}`;
+       costoEnvioInput.value = `${costoEnvio.toFixed(2)} ${currencyType}`;
+       totalInput.value = `${total.toFixed(2)} ${currencyType}`;
+   }
+//Se actualiza 
+   tipoEnvio.addEventListener("change", actualizarCostos);
+   actualizarCostos();
+   actualizarTotal();
+   document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('checkoutForm').addEventListener('click', function (event) {
+        event.preventDefault();
 
-        // Guardar en LocalStorage
-        localStorage.setItem("carrito", JSON.stringify(listaCarrito));
+        //se toman los datos de los inputs del form 
+        let departamento = document.getElementById("Departamento-address").value;
+        let localidad = document.getElementById("Localidad-address").value;
+        let calle = document.getElementById("Calle-address").value;
+        let numero = document.getElementById("Numero-address").value;
+        let esquina = document.getElementById("Esquina-address").value;
+        let formaDePago = document.getElementById("payment").value;
+        let formaDeEnvio = document.getElementById("shipping-type").value;
 
-        // Actualizar los costos globales (en la moneda seleccionada)
-        actualizarCostos();
-        actualizarTotal();
-    }
-}
+        // Verificar que todos los campos estén completos
+        if (departamento && localidad && calle && numero && esquina && formaDePago && formaDeEnvio) {
+            const checkoutModal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
 
-
-//Crear los elementos de la lista para mostrar en la pantalla de cart.html
-listaCarrito.forEach(Originalproduct => {
-    let subtotal = Originalproduct.precio * Originalproduct.cantidad; // Calcular subtotal
-    //SE CREAN EN EL HTML LOS DIVS PARA CARGAR LOS PRODUCTOS AGREGADOS AL CARRITO
-    let item = `
-       <div class="cart-item">
-            <div class="incart_image">
-                <img src="${Originalproduct.imagen}" alt="${Originalproduct.nombre}" />
-            </div>
-            <div class="incart_details">
-                <h5 class="incart_name">${Originalproduct.nombre}</h5>
-                <div class="incart_cost">Costo: ${Originalproduct.precio} ${Originalproduct.moneda}</div>
-            </div>
-            <div class="incart_soldcount">
-                Cantidad: 
-                <input type="number" value="${Originalproduct.cantidad}" min="1" 
-                onchange="actualizarCantidad('${Originalproduct.nombre}', this.value)">
-                <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal" data-nombre="${Originalproduct.nombre}">${subtotal} ${Originalproduct.moneda}</span></div>
-            </div>
-        </div>
-    `;
-    cartItemsContainer.innerHTML += item; // AQUI SE AGREFAN AL DIV DE CLASE CART ITEM
+            // Cerrar el modal con la animación de Bootstrap
+            checkoutModal.hide();
+            checkoutModal._element.addEventListener('hidden.bs.modal', function () {
+                // Vaciar el carrito del localStorage
+                localStorage.removeItem("carrito");
+//se muestra un mensaje para agradecer la compra y redirigir a products y seguir comprando
+                const cartContainer = document.getElementById("cart-container");
+                cartContainer.innerHTML = `
+                    <div class="text-center">
+                        <h3>¡Gracias por su compra!</h3>
+                        <p>Su compra se ha realizado con éxito.</p>
+                        <button class="btn btn-primary" onclick="window.location.href='products.html'">Seguir comprando</button>
+                    </div>
+                `;
+                const cartItems = document.getElementById('cart-items');
+                if (cartItems) {
+                    cartItems.innerHTML = ''; //se vacia el carrito para iniciar una nueva compra 
+                }
+            });
+        } else {
+            //sale alerta si falta completar algo
+            alert("Por favor complete todos los campos.");
+        }
+    });
 });
 
-// Elementos para mostrar los costos
-let subtotalInput = document.getElementById("Subtotal");
-let costoEnvioInput = document.getElementById("Costo-envio");
-let totalInput = document.getElementById("Total");
-let tipoEnvio = document.getElementById("shipping-type");
-
-// Función para calcular el subtotal
-function calcularSubtotal() {
-    let subtotal = 0;
-    listaCarrito.forEach(producto => {
-        let subtotalProducto = producto.precio * producto.cantidad;
-        
-        // Si la moneda seleccionada es USD, convertir el subtotal del producto
-        if (currencySelector.value === "USD" && producto.moneda === "UYU") {
-            subtotalProducto /= TIPO_CAMBIO; // Convertir a USD si es en UYU
-        } else if (currencySelector.value === "UYU" && producto.moneda === "USD") {
-            subtotalProducto *= TIPO_CAMBIO; // Convertir a UYU si es en USD
-        }
-
-        subtotal += subtotalProducto;
-    });
-    return subtotal;
-}
-
-// Función para calcular el costo de envío
-function calcularCostoEnvio(subtotal) {
-    let porcentajeEnvio = 0;
-    switch (tipoEnvio.value) {
-        case "Premium":
-            porcentajeEnvio = 0.15; // 15%
-            break;
-        case "Express":
-            porcentajeEnvio = 0.07; // 7%
-            break;
-        case "Standard":
-            porcentajeEnvio = 0.05; // 5%
-            break;
-        default:
-            porcentajeEnvio = 0;
-    }
-    return subtotal * porcentajeEnvio;
-}
-
-// Función para actualizar todos los costos
-function actualizarCostos() {
-    let subtotal = calcularSubtotal(); // Calcula el subtotal
-    let costoEnvio = calcularCostoEnvio(subtotal); // Calcula el costo de envío
-    const currencyType = document.getElementById("currency-type").value; // Moneda seleccionada
-
-    // Convertir costo de envío según la moneda seleccionada
-    if (currencyType === "USD") {
-        costoEnvio /= TIPO_CAMBIO;
-    } 
-
-    let total = subtotal + costoEnvio; // Calcula el total
-
-    // Mostrar los valores actualizados en los campos correspondientes
-    subtotalInput.value = `${subtotal.toFixed(2)} ${currencyType}`;
-    costoEnvioInput.value = `${costoEnvio.toFixed(2)} ${currencyType}`;
-    totalInput.value = `${total.toFixed(2)} ${currencyType}`;
-}
-
-
-// Event listener para cambios en el tipo de envío
-tipoEnvio.addEventListener("change", actualizarCostos);
-
-// Actualiza los costos inicialmente
-actualizarCostos();
-
-//.....................//
-
-// Calcular el total inicialmente
-actualizarTotal();
-
-
-// se crea un div para el boton y el total
-const buttonContainer = document.createElement("div");
-buttonContainer.className = "button-container"; //clase para estilo
-
-// Agregar el botón y el span del total al contenedor
-buttonContainer.appendChild(botonComprar);
-buttonContainer.appendChild(totalElement); // Agrega el span del total al contenedor
-cartItemsContainer.appendChild(buttonContainer); // Agrega el contenedor al carrito
-
-//Funcion finalizar compra
-let botonCheckOut = document.getElementById("Checkout");
-let departamento = document.getElementById("Departamento-address");
-let localidad = document.getElementById("Localidad-address");
-let calle = document.getElementById("Calle-address");
-let numero = document.getElementById("Numero-address");
-let esquina = document.getElementById("Esquina-address");
-let formaDePago = document.getElementById("payment")
-let formaDeEnvio = document.getElementById("shipping-type")
-let formulario = document.getElementById("checkoutForm");
-
-formulario.addEventListener("submit", function(event){
-
-    if(departamento.value && localidad.value && calle.value && numero.value && esquina.value && formaDePago.value && formaDeEnvio.value){
-        alert("Compra exitosa")
-    }
-    else{
-        alert("Por favor complete todo los campos")
-        event.preventDefault();
-    }
-})
+ document.getElementById('mostrarModal').addEventListener('click', function () {
+    //se muestra el modal
+    var myModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+    
+    myModal.show();
+});

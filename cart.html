@@ -9,6 +9,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -61,66 +63,74 @@
   </div>
   
   <!-- ENTREGA 7!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-    <form id= "form-check-out" action="">
-      <div class="form-group"> 
-      <label for="shipping-type">Tipo de envío</label>
-       <select class="form-control" id="shipping-type">
-         <option value="">Selecciona una opción</option>
-          <option value="Premium">Premium 2 a 5 días (15%)</option> 
-          <option value="Express">Express 5 a 8 días (7%)</option> 
-          <option value="Standard">Standard 12 a 15 días (5%)</option>
-         </select>
-         </div> 
-       
-      <div class="form-group">
-      <p>Dirección de envío</p>
-      <label for="Departamento">Departamento </label>  
-      <input type="text" id="Departamento-address" name="address" value="">
-        
-      <label for="Localidad">Localidad </label>
-      <input type="text" id="Localidad-address" name="address" value="">
-        
-      <label for="Calle">Calle </label>
-      <input type="text" id="Calle-address" name="address" value="">
-        
-      <label for="Numero">Número </label>
-      <input type="text" id="Numero-address" name="address" value="">
-        
-      <label for="Esquina">Esquina </label>
-      <input type="text" id="Esquina-address" name="address" value="">
-        
-      </div>
-      <div class="form-group"> 
-        <label for="payment-method">Forma de pago</label>
-         <select class="form-control" id="payment">
-           <option value="">Selecciona una opción</option>
-            <option value="Credit">Tarjeta de crédito</option> 
-            <option value="Transfer">Transferencia bancaria</option> 
-           </select>
-           </div>
-           <label for="currency-type">Moneda para el total:</label>
-<select id="currency-type">
-    <option value="UYU">UYU</option>
-    <option value="USD">USD</option>
-</select>
+   <!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" id="mostrarModal">
+  Finalizar compra
+</button>
 
-    
-    <div class="form-group">
-      <p>Costos</p>
-        <label for="">Subtotal:</label>
-        <input type="text" id="Subtotal" readonly>
-      
-        <label for="">Costo de envío: </label>
-        <input type="text" id="Costo-envio" readonly>
-        
-        <label for="">Total:</label>
-        <input type="text" id="Total" readonly>
-        
+   <!-- Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkoutModalLabel">Confirmar Compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div>
-       <button type="submit" id="Checkout">Finalizar compra</button>
+      <div class="modal-body">
+        <form id="form-check-out">
+          <div class="form-group">
+            <label for="shipping-type">Tipo de envío</label>
+            <select class="form-control" id="shipping-type">
+              <option value="">Selecciona una opción</option>
+              <option value="Premium">Premium 2 a 5 días (15%)</option>
+              <option value="Express">Express 5 a 8 días (7%)</option>
+              <option value="Standard">Standard 12 a 15 días (5%)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <p>Dirección de envío</p>
+            <label for="Departamento-address">Departamento</label>
+            <input type="text" id="Departamento-address" name="departamento">
+            <label for="Localidad-address">Localidad</label>
+            <input type="text" id="Localidad-address" name="localidad">
+            <label for="Calle-address">Calle</label>
+            <input type="text" id="Calle-address" name="calle">
+            <label for="Numero-address">Número</label>
+            <input type="text" id="Numero-address" name="numero">
+            <label for="Esquina-address">Esquina</label>
+            <input type="text" id="Esquina-address" name="esquina">
+          </div>
+          <div class="form-group">
+            <label for="payment">Forma de pago</label>
+            <select class="form-control" id="payment">
+              <option value="">Selecciona una opción</option>
+              <option value="Credit">Tarjeta de crédito</option>
+              <option value="Transfer">Transferencia bancaria</option>
+            </select>
+          </div>
+          <label for="currency-type">Moneda para el total:</label>
+          <select id="currency-type">
+            <option value="UYU">UYU</option>
+            <option value="USD">USD</option>
+          </select>
+
+          <div class="form-group">
+            <p>Costos</p>
+            <label for="Subtotal">Subtotal:</label>
+            <input type="text" id="Subtotal" readonly>
+            <label for="Costo-envio">Costo de envío:</label>
+            <input type="text" id="Costo-envio" readonly>
+            <label for="Total">Total:</label>
+            <input type="text" id="Total" readonly>
+          </div>
+        </form>
       </div>
-  </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" id="checkoutForm">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
 </div>
   </main>
   <footer class="text-muted">
