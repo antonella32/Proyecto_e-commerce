@@ -34,30 +34,54 @@ function actualizarCantidad(nombreProducto, nuevaCantidad) {
     }
 }
 
-// Mostrar los productos del carrito
-listaCarrito.forEach(Originalproduct => {
-    let subtotal = Originalproduct.precio * Originalproduct.cantidad;
-    let item = `
-        <div class="cart-item">
-            <div class="incart_image">
-                <img src="${Originalproduct.imagen}" alt="${Originalproduct.nombre}" />
-            </div>
-            <div class="incart_details">
-                <h5 class="incart_name">${Originalproduct.nombre}</h5>
-                <div class="incart_cost">Costo: ${Originalproduct.precio} ${Originalproduct.moneda}</div>
-            </div>
-            <div class="incart_soldcount">
-                Cantidad: 
-                <input type="number" value="${Originalproduct.cantidad}" min="1" 
-                onchange="actualizarCantidad('${Originalproduct.nombre}', this.value)">
-                <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal" data-nombre="${Originalproduct.nombre}">${subtotal} ${Originalproduct.moneda}</span></div>
-            </div>
-        </div>
-    `;
-    cartItemsContainer.innerHTML += item;
-});
+// Función para actualizar el carrito
+function actualizarCarrito() {
+    // Limpiar el contenedor de los productos
+    cartItemsContainer.innerHTML = "";
 
-// variables para  los inputs de los costos 
+    // Verificar si el carrito tiene productos
+    if (listaCarrito.length === 0) {
+        // Mostrar mensaje de carrito vacío y el botón de iniciar compra
+        document.getElementById('empty-cart-message').style.display = 'block';
+        
+        // Ocultar el botón de finalizar compra si el carrito está vacío
+        document.getElementById('mostrarModal').style.display = 'none';
+    } else {
+        // Ocultar el mensaje de carrito vacío
+        document.getElementById('empty-cart-message').style.display = 'none';
+
+        // Mostrar el botón de finalizar compra
+        document.getElementById('mostrarModal').style.display = 'block';
+
+        // Mostrar productos en el carrito
+        listaCarrito.forEach(Originalproduct => {
+            let subtotal = Originalproduct.precio * Originalproduct.cantidad;
+            let item = `
+                <div class="cart-item">
+                    <div class="incart_image">
+                        <img src="${Originalproduct.imagen}" alt="${Originalproduct.nombre}" />
+                    </div>
+                    <div class="incart_details">
+                        <h5 class="incart_name">${Originalproduct.nombre}</h5>
+                        <div class="incart_cost">Costo: ${Originalproduct.precio} ${Originalproduct.moneda}</div>
+                    </div>
+                    <div class="incart_soldcount">
+                        Cantidad: 
+                        <input type="number" value="${Originalproduct.cantidad}" min="1" 
+                        onchange="actualizarCantidad('${Originalproduct.nombre}', this.value)">
+                        <div data-nombre="${Originalproduct.nombre}">Subtotal: <span class="incart_subtotal" data-nombre="${Originalproduct.nombre}">${subtotal} ${Originalproduct.moneda}</span></div>
+                    </div>
+                </div>
+            `;
+            cartItemsContainer.innerHTML += item;
+        });
+    }
+}
+
+// Llamar a la función para inicializar el carrito
+actualizarCarrito();
+
+// Variables de entrada para los costos
 let subtotalInput = document.getElementById("Subtotal");
 let costoEnvioInput = document.getElementById("Costo-envio");
 let totalInput = document.getElementById("Total");
@@ -119,7 +143,7 @@ tipoEnvio.addEventListener("change", actualizarCostos);
 // Se actualiza el total inicialmente
 actualizarCostos();
 
-//EVENTO DE FINALIZAR COMPRA!!!!!!!!!!!!!!!!!11
+// Se escucha el evento de finalizar compra
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('checkoutForm').addEventListener('click', function (event) {
         event.preventDefault();
@@ -133,14 +157,14 @@ document.addEventListener('DOMContentLoaded', function () {
         let formaDePago = document.getElementById("payment").value;
         let formaDeEnvio = document.getElementById("shipping-type").value;
 
-        //se verifica que se haya completado todoooo
+        // Verificar que todos los campos estén completos
         if (departamento && localidad && calle && numero && esquina && formaDePago && formaDeEnvio) {
             const checkoutModal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
 
-            //SE CIERRA EL Modal
+            // Cerrar el modal con la animación de Bootstrap
             checkoutModal.hide();
             checkoutModal._element.addEventListener('hidden.bs.modal', function () {
-                //SE VACIA EL CARRITO Y EL BADGE SE MUESTRA EN CERO PARA INICIAR UNA NUEVA COMPRA 
+                // Vaciar el carrito del localStorage
                 localStorage.removeItem("carrito");
 
                 // Se muestra un mensaje para agradecer la compra y redirigir a products y seguir comprando
