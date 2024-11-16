@@ -987,3 +987,25 @@ body.dark-mode #profile-form input {
   font-size: 18px;
   font-weight: bold;
 }
+
+/* ENTREGA 7!!!!!!!*/
+
+body.dark-mode {
+  background-color: #121212; 
+  color: #ffffff; 
+}
+
+body.dark-mode .modal-content {
+  background-color: #343a40; 
+  color: #ffffff; 
+}
+
+body.dark-mode .btn-close {
+  color: #ffffff; 
+}
+
+body.dark-mode .btn-secondary,
+body.dark-mode .btn-primary {
+  background-color: #007bff; 
+  border: none;
+}
