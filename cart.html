@@ -9,6 +9,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -29,28 +30,24 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
-                  <!-- Entrega 5 inicio MENU DESPLEGABLE-->
-          <div class="dropdown">
-            <li class="nav-item dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 
-                <span id="user-navbar" class="nav-link"></span> 
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/cart.html">Mi carrito</a></li>
-                <li><a class="dropdown-item" href="/my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="/login.html">Cerrar Sesión</a></li>
-              </ul>
-            </li>
+          <!-- Entrega 5 inicio MENU DESPLEGABLE-->
+           <li class="nav-item dropdown">
+  <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span id="user-navbar" class="nav-link">Usuario</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/my-profile.html">Mi perfil</a></li>
+    <li><a class="dropdown-item" href="/login.html">Cerrar Sesión</a></li>
+  </ul>
+       </li>
+
+        </ul>
       </div>
-      </ul>
     </div>
-  </div>
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="modeSwitch">
-    <label class="form-check-label" for="modeSwitch">Modo Noche</label>
-  </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="modeSwitch">
+      <label class="form-check-label" for="modeSwitch">Modo Noche</label>
+    </div>
   </nav>
   <main>
     <h4 id="titulo-carrito">Carrito de compras</h4>
@@ -58,6 +55,89 @@
      <div class="container" id="cart-container">
     <div class="container "id="cart-items" class="cart-items">
       <!-- Los productos del carrito se agregarán aquí dinámicamente -->
+  </div>
+  
+  <!-- ENTREGA 7!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+    <!-- MENSAJE para cuando el carrito está vacío-->
+
+  <div id="empty-cart-message" class="text-center" style="display: none;">
+    <h3>Tu carrito está vacío</h3>
+    <button class="btn btn-primary" onclick="window.location.href='products.html'">Inicia tu compra</button>
+</div>
+
+   <!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" id="mostrarModal">
+  Finalizar compra
+</button>
+
+   <!-- Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkoutModalLabel">Confirmar Compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-check-out">
+          <div class="form-group">
+            <label for="shipping-type">Tipo de envío</label>
+            <select class="form-control" id="shipping-type">
+              <option value="">Selecciona una opción</option>
+              <option value="Premium">Premium 2 a 5 días (15%)</option>
+              <option value="Express">Express 5 a 8 días (7%)</option>
+              <option value="Standard">Standard 12 a 15 días (5%)</option>
+            </select>
+          </div>
+            <!-- Formulatio que completa el cliente apra finalizar su compra-->
+
+          <div class="form-group">
+            <p>Dirección de envío</p>
+            <label for="Departamento-address">Departamento</label>
+            <input type="text" id="Departamento-address" name="departamento">
+            <label for="Localidad-address">Localidad</label>
+            <input type="text" id="Localidad-address" name="localidad">
+            <label for="Calle-address">Calle</label>
+            <input type="text" id="Calle-address" name="calle">
+            <label for="Numero-address">Número</label>
+            <input type="text" id="Numero-address" name="numero">
+            <label for="Esquina-address">Esquina</label>
+            <input type="text" id="Esquina-address" name="esquina">
+          </div>
+          <div class="form-group">
+            <label for="payment">Forma de pago</label>
+            <select class="form-control" id="payment">
+              <option value="">Selecciona una opción</option>
+              <option value="Credit">Tarjeta de crédito</option>
+              <option value="Transfer">Transferencia bancaria</option>
+            </select>
+          </div>
+            <!-- aca puede elegir la moneda -->
+
+          <label for="currency-type">Moneda para el total:</label>
+          <select id="currency-type">
+            <option value="UYU">UYU</option>
+            <option value="USD">USD</option>
+          </select>
+  <!--Visualización de los costos -->
+
+          <div class="form-group">
+            <p>Costos</p>
+            <label for="Subtotal">Subtotal:</label>
+            <input type="text" id="Subtotal" readonly>
+            <label for="Costo-envio">Costo de envío:</label>
+            <input type="text" id="Costo-envio" readonly>
+            <label for="Total">Total:</label>
+            <input type="text" id="Total" readonly>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" id="checkoutForm">Finalizar compra</button>
+      </div>
+    </div>
   </div>
 </div>
   </main>

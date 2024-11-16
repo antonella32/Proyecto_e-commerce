@@ -1,4 +1,3 @@
-
 let productId = localStorage.getItem("selectedProductId") //toma el id del producto seleccionado
 let originalList = [];
 let Originalproduct = {}; //definimos globalmente Originalproduct para usarlo en todos los archivos
@@ -170,6 +169,7 @@ function showProductInfoTable(product) {           //Basado en showproducts tabl
     // Inicializa el carrusel al cargar
     updateCarousel();
 }
+
 //FUNCION PARA MOSTRAR LAS CALIFICACIONES DE LOS USUARIOS SEGUN EL PRODUCTO SELECCIONADO
 function showProductsCalifications(userdata) {
     let productsHtml = ""; //comienza vacio 
@@ -208,6 +208,7 @@ function getStars(score) {
     }
     return starsHtml;
 }
+
 //FUNCION PARA MOSTRAR LOS PRODUCTOS RELACIONADOS
 
 function showRelatedProducts(relatedProducts) {
@@ -308,4 +309,3 @@ document.getElementById("modeSwitch").addEventListener("change", function () {
       document.querySelector("label[for='modeSwitch']").textContent = "Modo Día";
     }
   });
-  
