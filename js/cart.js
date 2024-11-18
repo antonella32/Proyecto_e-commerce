@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="text-center">
                         <h3>¡Gracias por su compra!</h3>
                         <p>Su compra se ha realizado con éxito.</p>
-                        <button class="btn btn-primary" onclick="window.location.href='products.html'">Seguir comprando</button>
+                        <button class="btn btn-primary" onclick="window.location.href='categories.html'">Seguir comprando</button>
                     </div>
                 `;
 
