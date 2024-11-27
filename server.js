@@ -1,10 +1,43 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors'); // Importa CORS
+const cors = require('cors');  
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const app = express();
 const PORT = 3000;
+
 app.use(cors()); // Permite CORS en todas las rutas
+app.use(express.json());
+
+//parte TRESSSSSSSSSSSSSSSSSSSS
+const users = [
+    { username: 'Antonella', password: 'Holamundo' }
+  ];
+  
+
+  // Ruta para autenticar usuarios (POST /login)
+// Ruta POST para login
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+  
+    // Verificar si el usuario existe
+    const user = users.find(u => u.username === username && u.password === password);
+  
+    if (user) {
+      // Crear un token
+
+     //ACA SE GENERA EL TOKEN
+      const token = jwt.sign({ username: user.username }, 'secreto', { expiresIn: '1h' });
+      res.json({ token }); // Devolver el token al cliente
+    } else {
+      res.status(401).json({ message: 'Credenciales inválidas' }); // Si no se encuentran las credenciales
+    }
+  });
+
+
+
+//PARTE TRES FIN
 
 // Middleware para servir archivos estáticos desde la carpeta emercado-api-main
 app.use('/api', express.static(path.join(__dirname, 'emercado-api-main')));
@@ -56,3 +89,4 @@ app.get('/api/products_comments/:productId', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
