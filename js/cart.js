@@ -218,3 +218,29 @@ document.getElementById('mostrarModal').addEventListener('click', function () {
     const myModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
     myModal.show();
 });
+
+//desafiate entrega 8
+//carrito para usar de ejemplo
+const carrito = {
+    idUsuario: 1,  
+    productos: [
+      { idProducto: 101 },  
+      { idProducto: 102 }   
+    ]
+  };
+  
+  fetch('http://localhost:3000/cart', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(carrito)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Carrito actualizado:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  

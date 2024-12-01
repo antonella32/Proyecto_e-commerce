@@ -1,0 +1,41 @@
+Instrucciones para probar el backend del e-commerce
+Requisitos previos
+Instalar Node.js y MySQL.
+Tener un cliente de MySQL configurado (por ejemplo, MySQL Workbench o la consola de MySQL).
+-----------------------------------------------------------------------------------------
+ Instalar dependencias de Node.js en terminal con npm install
+ ----------------------------------------------------------------------------------------
+ Configurar la base de datos
+ ----------------------------------------------------------------------------------------
+ Para my SQL usuario root contraseña hola
+ ----------------------------------------------------------------------------------------
+ Abre tu cliente de MySQL.
+ ----------------------------------------------------------------------------------------
+ Implementar lo estipulado por el archivo ecommerce.sql que está dentro del proyecto
+ ----------------------------------------------------------------------------------------
+ Iniciar el servidor node server.js (luego de haber navegado a al carpeta backend en powershell)
+----------------------------------------------------------------------------------------
+Deberías ver el mensaje:
+Servidor corriendo en http://localhost:3000
+----------------------------------------------------------------------------------------
+
+Probar el backend
+'''''''''''''''''
+Endpoint de LOGIN en POSTMAN
+
+una solicitud POST al endpoint /login con los siguientes datos:
+{
+    "username": "name",
+    "password": "password"
+}
+
+En postman se devolverá un token valido por 1h
+''''''''''''''''''''''''''''''''''''''''''''''
+En authorization seleccionamos Bearer token y lo ponemos alli 
+''''''''''''''''''''''''''''''''''''''''''''''
+Ahora se puede acceder a rutas como:
+/api/cats
+/api/products/:productId    ejemplo /api/products/40281
+
+/api/products_comments/:productId ejemplo /api/products_comments/50744
+
