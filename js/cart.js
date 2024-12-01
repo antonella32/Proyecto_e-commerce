@@ -220,11 +220,12 @@ document.getElementById('mostrarModal').addEventListener('click', function () {
 });
 
 //desafiate entrega 8
+//carrito para usar de ejemplo
 const carrito = {
-    idUsuario: 1,  // El ID del usuario
+    idUsuario: 1,  
     productos: [
-      { idProducto: 101 },  // Ejemplo de producto con ID 101
-      { idProducto: 102 }   // Ejemplo de producto con ID 102
+      { idProducto: 101 },  
+      { idProducto: 102 }   
     ]
   };
   
@@ -232,7 +233,6 @@ const carrito = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer <tu_token_aquí>'  // Asegúrate de incluir un token válido
     },
     body: JSON.stringify(carrito)
   })

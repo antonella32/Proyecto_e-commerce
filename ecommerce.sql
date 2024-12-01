@@ -49,3 +49,18 @@ CREATE TABLE Carrito (
     FOREIGN KEY (idUsuario) REFERENCES Usuario(id),
     FOREIGN KEY (producto) REFERENCES Producto(id)
 );
+
+
+--despues agregar los datos a las tablas
+--ejemplo
+INSERT INTO Carrito (idUsuario, producto) 
+VALUES 
+  (1, 1), 
+  (1, 2); 
+
+-- Insertar productos con imágenes, descripción y precio ajustado
+INSERT INTO Producto (name, description, cost, imgSrc) 
+VALUES 
+  ('Auto Peugeot 208', 'Auto compacto de alta eficiencia, ideal para la ciudad. Con tecnología avanzada y excelente rendimiento en combustible.', 25000.75, 'car1.jpg'),
+  ('Auto Peugeot 3008', 'SUV de lujo con características premium, amplio espacio interior y sistema de seguridad avanzada.', 35000.50, 'car2.jpg');
+
