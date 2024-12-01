@@ -146,3 +146,47 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
+//--------------------DESAFIATE---------------------- 
+
+// Configuración de la conexión a MySQL
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',   // Tu usuario de MySQL
+  password: 'hola',   // Tu contraseña de MySQL
+  database: 'ecommerce'
+});
+
+// Conexión a la base de datos
+db.connect((err) => {
+  if (err) {
+    console.error('Error de conexión a la base de datos:', err.stack);
+    return;
+  }
+  console.log('Conectado a la base de datos MySQL');
+});
+
+//---------------------------------------
+// Endpoint POST /cart
+app.post('/cart', verificarToken, (req, res) => {
+  const { idUsuario, productos } = req.body; // Se espera que el cuerpo contenga los productos y el idUsuario
+
+  if (!idUsuario || !Array.isArray(productos) || productos.length === 0) {
+    return res.status(400).json({ message: 'Se requiere el idUsuario y al menos un producto.' });
+  }
+
+  // Guardar los productos del carrito en la base de datos
+  productos.forEach(producto => {
+    const { idProducto } = producto; // Asumimos que el producto tiene un campo idProducto
+
+    // Insertar el producto en la tabla de carrito
+    const query = 'INSERT INTO Carrito (idUsuario, producto) VALUES (?, ?)';
+    db.query(query, [idUsuario, idProducto], (err, result) => {
+      if (err) {
+        console.error('Error al insertar producto en carrito:', err);
+        return res.status(500).json({ message: 'Error al agregar producto al carrito.' });
+      }
+    });
+  });
+
+  res.status(200).json({ message: 'Productos agregados al carrito correctamente.' });
+});

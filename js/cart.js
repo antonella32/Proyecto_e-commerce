@@ -218,3 +218,29 @@ document.getElementById('mostrarModal').addEventListener('click', function () {
     const myModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
     myModal.show();
 });
+
+//desafiate entrega 8
+const carrito = {
+    idUsuario: 1,  // El ID del usuario
+    productos: [
+      { idProducto: 101 },  // Ejemplo de producto con ID 101
+      { idProducto: 102 }   // Ejemplo de producto con ID 102
+    ]
+  };
+  
+  fetch('http://localhost:3000/cart', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer <tu_token_aquí>'  // Asegúrate de incluir un token válido
+    },
+    body: JSON.stringify(carrito)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Carrito actualizado:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  
