@@ -1,10 +1,7 @@
--- Crear base de datos
 CREATE DATABASE ecommerce;
 
--- Seleccionar la base de datos
 USE ecommerce;
 
--- Crear tabla de productos
 CREATE TABLE Producto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -13,7 +10,6 @@ CREATE TABLE Producto (
     imgSrc VARCHAR(255)
 );
 
--- Crear tabla de categorías
 CREATE TABLE Categoria (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -22,7 +18,6 @@ CREATE TABLE Categoria (
     imgSrc VARCHAR(255)
 );
 
--- Crear tabla de usuarios
 CREATE TABLE Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(255) NOT NULL UNIQUE,
@@ -30,7 +25,6 @@ CREATE TABLE Usuario (
     isLoggedIn BOOLEAN DEFAULT FALSE
 );
 
--- Crear tabla de métodos de pago
 CREATE TABLE MetodoDePago (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL,
@@ -38,7 +32,6 @@ CREATE TABLE MetodoDePago (
     estado VARCHAR(50) NOT NULL
 );
 
--- Crear tabla de tarjetas
 CREATE TABLE Tarjeta (
     id INT AUTO_INCREMENT PRIMARY KEY,
     idUsuario INT NOT NULL,
@@ -49,7 +42,6 @@ CREATE TABLE Tarjeta (
     FOREIGN KEY (idMetodoDePago) REFERENCES MetodoDePago(id)
 );
 
--- Crear tabla de carrito
 CREATE TABLE Carrito (
     idCarrito INT AUTO_INCREMENT PRIMARY KEY,
     idUsuario INT NOT NULL,
