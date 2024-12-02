@@ -51,7 +51,7 @@ CREATE TABLE Carrito (
 );
 
 
---despues agregar los datos a las tablas
+--despues agregar los datos a las tablas para probar
 --ejemplo
 INSERT INTO Carrito (idUsuario, producto) 
 VALUES 
